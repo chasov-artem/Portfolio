@@ -1,20 +1,19 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Projects from "./pages/MyProjects/MyProjects";
-import "./index.css";
+import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <div className="flex">
-        <Sidebar />
-        <div className="flex-1 p-6">
-          <Routes>
-            <Route path="/" element={<Projects />} />
-          </Routes>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div className="flex">
+          <Sidebar />
+          <div className="flex-1 p-6">
+            <Projects />
+          </div>
         </div>
       </div>
-    </Router>
+    </div>
   );
 }
 
