@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
 import styles from "./MyProjects.module.css";
 import { projects } from "../../projectsData";
-import LocomotiveScroll from "locomotive-scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,91 +12,81 @@ const Projects = () => {
   const projectsRef = useRef([]);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    const locoScroll = new LocomotiveScroll({
-      el: containerRef.current,
+    const lenis = new Lenis({
       smooth: true,
       lerp: 0.07,
     });
 
-    locoScroll.on("scroll", ScrollTrigger.update);
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
     ScrollTrigger.scrollerProxy(containerRef.current, {
       scrollTop(value) {
-        return arguments.length
-          ? locoScroll.scrollTo(value, 0, 0)
-          : locoScroll.scroll.instance.scroll.y;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
+        return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
       },
     });
 
-    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
-    const projects = document.querySelectorAll(`.${styles.project}`);
-
-    projects.forEach((project, index) => {
+    projectsRef.current.forEach((project, index) => {
       const isEven = index % 2 === 0;
       const img = project.querySelector(`.${styles.imageWrapper}`);
       const text = project.querySelector(`.${styles.textWrapper}`);
 
       gsap.fromTo(
         img,
-        { opacity: 0, x: isEven ? 100 : -100 },
+        { opacity: 0, y: 50, x: isEven ? 100 : -100 },
         {
           opacity: 1,
+          y: 0,
           x: 0,
           duration: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: project,
-            start: "top 60%", // Раніше запуск анімації
-            end: "bottom 40%",
+            start: "top 80%",
+            end: "top 20%",
             scrub: 1,
             scroller: containerRef.current,
+            onLeave: () => gsap.to(img, { opacity: 0, y: -50, duration: 0.5 }),
+            onEnterBack: () =>
+              gsap.to(img, { opacity: 1, y: 0, duration: 0.5 }),
           },
         }
       );
 
       gsap.fromTo(
         text,
-        { opacity: 0, x: isEven ? -100 : 100 },
+        { opacity: 0, y: 50, x: isEven ? -100 : 100 },
         {
           opacity: 1,
+          y: 0,
           x: 0,
           duration: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: project,
-            start: "top 60%",
-            end: "bottom 40%",
+            start: "top 80%",
+            end: "top 20%",
             scrub: 1,
             scroller: containerRef.current,
+            onLeave: () => gsap.to(text, { opacity: 0, y: -50, duration: 0.5 }),
+            onEnterBack: () =>
+              gsap.to(text, { opacity: 1, y: 0, duration: 0.5 }),
           },
         }
       );
     });
 
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 1000);
-
-    return () => {
-      locoScroll.destroy();
-    };
+    return () => lenis.destroy();
   }, []);
 
   return (
     <section ref={containerRef} className={styles.projectsContainer}>
-      <h2 className={styles.title}>My Projects</h2>
       <div className={styles.projectsList}>
         {projects.map(
           ({ id, title, description, tech, image, demo, code }, index) => (
