@@ -12,7 +12,6 @@ const Projects = () => {
   const projectsRef = useRef([]);
 
   useEffect(() => {
-    // 1. Ініціалізація Lenis для плавного скролу
     const lenis = new Lenis({
       smooth: true,
       lerp: 0.03,
@@ -24,7 +23,6 @@ const Projects = () => {
     }
     requestAnimationFrame(raf);
 
-    // 2. Налаштування ScrollTrigger під Lenis
     ScrollTrigger.scrollerProxy(containerRef.current, {
       scrollTop(value) {
         return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
@@ -42,39 +40,37 @@ const Projects = () => {
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
-    // 3. Для кожного проекту створюємо анімацію
     projectsRef.current.forEach((project, index) => {
-      if (!project) return; // Якщо посилання немає, пропускаємо
-
+      if (!project) return;
       const isEven = index % 2 === 0;
       const img = project.querySelector(`.${styles.imageWrapper}`);
       const text = project.querySelector(`.${styles.textWrapper}`);
 
-      // Початкові стилі (контент невидимий, зрушений у нижній кут)
+      // Початкові стилі
       gsap.set([img, text], {
         opacity: 0,
         y: "20%",
         x: isEven ? "20%" : "-20%",
       });
 
-      // 3.1. Анімація для зображення
+      // Таймлайн для зображення
       const imgTl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
-          start: "top 80%", // починаємо, коли 20% елемента в в’юпорті
-          end: "top -20%", // закінчуємо, коли елемент виходить за верх в’юпорта
-          scrub: 1, // повний контроль анімації скролом
+          start: "top 70%",
+          end: "top -50%",
+          scrub: 1,
           scroller: containerRef.current,
         },
       });
 
-      // Від нижнього кута до центру
+      // З’явлення знизу
       imgTl.fromTo(
         img,
         { opacity: 0, y: "20%", x: isEven ? "20%" : "-20%" },
         { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
       );
-      // Від центру в протилежний верхній кут
+      // Зникнення догори
       imgTl.to(img, {
         opacity: 0,
         y: "-20%",
@@ -83,24 +79,24 @@ const Projects = () => {
         ease: "power2.in",
       });
 
-      // 3.2. Анімація для тексту
+      // Таймлайн для тексту
       const textTl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
-          start: "top 80%",
-          end: "top -20%",
+          start: "top 70%",
+          end: "top -50%",
           scrub: 1,
           scroller: containerRef.current,
         },
       });
 
-      // Від нижнього кута до центру
+      // З’явлення знизу
       textTl.fromTo(
         text,
         { opacity: 0, y: "20%", x: isEven ? "-20%" : "20%" },
         { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
       );
-      // Від центру в протилежний верхній кут
+      // Зникнення догори
       textTl.to(text, {
         opacity: 0,
         y: "-20%",
@@ -110,18 +106,16 @@ const Projects = () => {
       });
     });
 
-    // 4. Оновлення ScrollTrigger після завантаження зображень
+    // Оновлення після завантаження зображень
     const images = document.querySelectorAll(`.${styles.image}`);
     images.forEach((img) => {
       img.onload = () => ScrollTrigger.refresh();
     });
 
-    // 5. Додаткове оновлення через 1 сек
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 1000);
 
-    // При розмонтуванні
     return () => lenis.destroy();
   }, []);
 
@@ -146,8 +140,8 @@ const Projects = () => {
                 <img src={image} alt={title} className={styles.image} />
               </a>
               <div className={styles.textWrapper}>
-                <h3>{title}</h3>
-                <p>{description}</p>
+                <h3 className={styles.projectTitle}>{title}</h3>
+                <p className={styles.description}>{description}</p>
                 <div className={styles.techStack}>
                   {tech.map((t, i) => (
                     <span key={i} className={styles.tech}>
@@ -156,10 +150,20 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className={styles.links}>
-                  <a href={demo} target="_blank" rel="noopener noreferrer">
+                  <a
+                    className={styles.link}
+                    href={demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Demo
                   </a>
-                  <a href={code} target="_blank" rel="noopener noreferrer">
+                  <a
+                    className={styles.link}
+                    href={code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Code
                   </a>
                 </div>

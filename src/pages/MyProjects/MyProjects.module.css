@@ -5,7 +5,7 @@
   justify-content: center;
   gap: 3rem;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .projectsList {
@@ -42,7 +42,7 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
@@ -61,10 +61,14 @@
 .projectTitle {
   font-size: 1.5rem;
   font-weight: bold;
+  color: white;
+  font-size: 64px;
+  color: rgb(170, 0, 0);
 }
 
 .description {
-  color: #aaa;
+  color: white;
+  font-size: 32px;
 }
 
 .techStack {
@@ -80,13 +84,14 @@
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 2rem;
 }
 
 .links {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  font-size: 32px;
 }
 
 .link {
@@ -95,6 +100,7 @@
   align-items: center;
   gap: 0.3rem;
   transition: color 0.3s;
+  color: rgb(170, 0, 0);
 }
 
 .link:hover {
