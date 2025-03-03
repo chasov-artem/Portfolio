@@ -14,7 +14,7 @@ const Projects = () => {
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.07,
+      lerp: 0.03, // Плавніший скрол
     });
 
     function raf(time) {
@@ -27,6 +27,14 @@ const Projects = () => {
       scrollTop(value) {
         return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
       },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
     });
 
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
@@ -37,50 +45,114 @@ const Projects = () => {
       const img = project.querySelector(`.${styles.imageWrapper}`);
       const text = project.querySelector(`.${styles.textWrapper}`);
 
-      gsap.fromTo(
-        img,
-        { opacity: 0, y: 50, x: isEven ? 100 : -100 },
-        {
-          opacity: 1,
-          y: 0,
-          x: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: project,
-            start: "top 80%",
-            end: "top 20%",
-            scrub: 1,
-            scroller: containerRef.current,
-            onLeave: () => gsap.to(img, { opacity: 0, y: -50, duration: 0.5 }),
-            onEnterBack: () =>
-              gsap.to(img, { opacity: 1, y: 0, duration: 0.5 }),
-          },
-        }
-      );
+      // Початковий стан: контент невидимий
+      gsap.set([img, text], {
+        opacity: 0,
+        y: "20%",
+        x: isEven ? "20%" : "-20%",
+      });
 
-      gsap.fromTo(
-        text,
-        { opacity: 0, y: 50, x: isEven ? -100 : 100 },
-        {
-          opacity: 1,
-          y: 0,
-          x: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: project,
-            start: "top 80%",
-            end: "top 20%",
-            scrub: 1,
-            scroller: containerRef.current,
-            onLeave: () => gsap.to(text, { opacity: 0, y: -50, duration: 0.5 }),
-            onEnterBack: () =>
-              gsap.to(text, { opacity: 1, y: 0, duration: 0.5 }),
-          },
-        }
-      );
+      // Один ScrollTrigger для зображення
+      ScrollTrigger.create({
+        trigger: project,
+        start: "top 80%", // Початок анімації, коли 20% проекту у вьюпорті
+        end: "top -20%", // Кінець анімації, коли проект повністю виходить за межі вьюпорту
+        scrub: 1,
+        scroller: containerRef.current,
+        onEnter: () => {
+          gsap.to(img, {
+            opacity: 1,
+            y: "0%",
+            x: "0%",
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+        onLeave: () => {
+          gsap.to(img, {
+            opacity: 0,
+            y: "-20%",
+            x: isEven ? "20%" : "-20%", // Рухаємо в протилежний верхній кут
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(img, {
+            opacity: 1,
+            y: "0%",
+            x: "0%",
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(img, {
+            opacity: 0,
+            y: "20%",
+            x: isEven ? "20%" : "-20%",
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+      });
+
+      // Один ScrollTrigger для тексту
+      ScrollTrigger.create({
+        trigger: project,
+        start: "top 80%", // Початок анімації, коли 20% проекту у вьюпорті
+        end: "top -20%", // Кінець анімації, коли проект повністю виходить за межі вьюпорту
+        scrub: 1,
+        scroller: containerRef.current,
+        onEnter: () => {
+          gsap.to(text, {
+            opacity: 1,
+            y: "0%",
+            x: "0%",
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+        onLeave: () => {
+          gsap.to(text, {
+            opacity: 0,
+            y: "-20%",
+            x: isEven ? "-20%" : "20%", // Рухаємо в протилежний верхній кут
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(text, {
+            opacity: 1,
+            y: "0%",
+            x: "0%",
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(text, {
+            opacity: 0,
+            y: "20%",
+            x: isEven ? "-20%" : "20%",
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+      });
     });
+
+    // Додаємо оновлення ScrollTrigger після завантаження всіх зображень
+    const images = document.querySelectorAll(`.${styles.image}`);
+    images.forEach((img) => {
+      img.onload = () => ScrollTrigger.refresh();
+    });
+
+    // Оновлюємо ScrollTrigger після завантаження сторінки
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
 
     return () => lenis.destroy();
   }, []);
