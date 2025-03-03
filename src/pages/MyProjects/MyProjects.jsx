@@ -12,9 +12,10 @@ const Projects = () => {
   const projectsRef = useRef([]);
 
   useEffect(() => {
+    // 1. Ініціалізація Lenis для плавного скролу
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.03, // Плавніший скрол
+      lerp: 0.03,
     });
 
     function raf(time) {
@@ -23,6 +24,7 @@ const Projects = () => {
     }
     requestAnimationFrame(raf);
 
+    // 2. Налаштування ScrollTrigger під Lenis
     ScrollTrigger.scrollerProxy(containerRef.current, {
       scrollTop(value) {
         return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
@@ -40,120 +42,86 @@ const Projects = () => {
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
+    // 3. Для кожного проекту створюємо анімацію
     projectsRef.current.forEach((project, index) => {
+      if (!project) return; // Якщо посилання немає, пропускаємо
+
       const isEven = index % 2 === 0;
       const img = project.querySelector(`.${styles.imageWrapper}`);
       const text = project.querySelector(`.${styles.textWrapper}`);
 
-      // Початковий стан: контент невидимий
+      // Початкові стилі (контент невидимий, зрушений у нижній кут)
       gsap.set([img, text], {
         opacity: 0,
         y: "20%",
         x: isEven ? "20%" : "-20%",
       });
 
-      // Один ScrollTrigger для зображення
-      ScrollTrigger.create({
-        trigger: project,
-        start: "top 80%", // Початок анімації, коли 20% проекту у вьюпорті
-        end: "top -20%", // Кінець анімації, коли проект повністю виходить за межі вьюпорту
-        scrub: 1,
-        scroller: containerRef.current,
-        onEnter: () => {
-          gsap.to(img, {
-            opacity: 1,
-            y: "0%",
-            x: "0%",
-            duration: 1,
-            ease: "power2.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(img, {
-            opacity: 0,
-            y: "-20%",
-            x: isEven ? "20%" : "-20%", // Рухаємо в протилежний верхній кут
-            duration: 1,
-            ease: "power2.out",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(img, {
-            opacity: 1,
-            y: "0%",
-            x: "0%",
-            duration: 1,
-            ease: "power2.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(img, {
-            opacity: 0,
-            y: "20%",
-            x: isEven ? "20%" : "-20%",
-            duration: 1,
-            ease: "power2.out",
-          });
+      // 3.1. Анімація для зображення
+      const imgTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: project,
+          start: "top 80%", // починаємо, коли 20% елемента в в’юпорті
+          end: "top -20%", // закінчуємо, коли елемент виходить за верх в’юпорта
+          scrub: 1, // повний контроль анімації скролом
+          scroller: containerRef.current,
         },
       });
 
-      // Один ScrollTrigger для тексту
-      ScrollTrigger.create({
-        trigger: project,
-        start: "top 80%", // Початок анімації, коли 20% проекту у вьюпорті
-        end: "top -20%", // Кінець анімації, коли проект повністю виходить за межі вьюпорту
-        scrub: 1,
-        scroller: containerRef.current,
-        onEnter: () => {
-          gsap.to(text, {
-            opacity: 1,
-            y: "0%",
-            x: "0%",
-            duration: 1,
-            ease: "power2.out",
-          });
+      // Від нижнього кута до центру
+      imgTl.fromTo(
+        img,
+        { opacity: 0, y: "20%", x: isEven ? "20%" : "-20%" },
+        { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
+      );
+      // Від центру в протилежний верхній кут
+      imgTl.to(img, {
+        opacity: 0,
+        y: "-20%",
+        x: isEven ? "20%" : "-20%",
+        duration: 0.5,
+        ease: "power2.in",
+      });
+
+      // 3.2. Анімація для тексту
+      const textTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: project,
+          start: "top 80%",
+          end: "top -20%",
+          scrub: 1,
+          scroller: containerRef.current,
         },
-        onLeave: () => {
-          gsap.to(text, {
-            opacity: 0,
-            y: "-20%",
-            x: isEven ? "-20%" : "20%", // Рухаємо в протилежний верхній кут
-            duration: 1,
-            ease: "power2.out",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(text, {
-            opacity: 1,
-            y: "0%",
-            x: "0%",
-            duration: 1,
-            ease: "power2.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(text, {
-            opacity: 0,
-            y: "20%",
-            x: isEven ? "-20%" : "20%",
-            duration: 1,
-            ease: "power2.out",
-          });
-        },
+      });
+
+      // Від нижнього кута до центру
+      textTl.fromTo(
+        text,
+        { opacity: 0, y: "20%", x: isEven ? "-20%" : "20%" },
+        { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
+      );
+      // Від центру в протилежний верхній кут
+      textTl.to(text, {
+        opacity: 0,
+        y: "-20%",
+        x: isEven ? "-20%" : "20%",
+        duration: 0.5,
+        ease: "power2.in",
       });
     });
 
-    // Додаємо оновлення ScrollTrigger після завантаження всіх зображень
+    // 4. Оновлення ScrollTrigger після завантаження зображень
     const images = document.querySelectorAll(`.${styles.image}`);
     images.forEach((img) => {
       img.onload = () => ScrollTrigger.refresh();
     });
 
-    // Оновлюємо ScrollTrigger після завантаження сторінки
+    // 5. Додаткове оновлення через 1 сек
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 1000);
 
+    // При розмонтуванні
     return () => lenis.destroy();
   }, []);
 
