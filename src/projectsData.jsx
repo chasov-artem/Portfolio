@@ -9,6 +9,7 @@ export const projects = [
     image: "/src/images/traveltrucks.png",
     demo: "https://travel-trucks-hx3g.vercel.app/",
     code: "https://github.com/chasov-artem/TravelTrucks",
+    logoImage: "/src/images/camper.png",
   },
   {
     id: 6,
@@ -31,6 +32,7 @@ export const projects = [
     image: "/src/images/aquatrack.png",
     demo: "https://aqua-track-group-01.vercel.app/",
     code: "https://github.com/DmytroK-goit/AquaTrack-group-01",
+    logoImage: "/src/images/aqua.png",
   },
   {
     id: 4,
