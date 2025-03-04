@@ -123,7 +123,10 @@ const Projects = () => {
     <section ref={containerRef} className={styles.projectsContainer}>
       <div className={styles.projectsList}>
         {projects.map(
-          ({ id, title, description, tech, image, demo, code }, index) => (
+          (
+            { id, title, description, tech, image, demo, code, logoImage },
+            index
+          ) => (
             <div
               key={id}
               ref={(el) => (projectsRef.current[index] = el)}
@@ -140,6 +143,17 @@ const Projects = () => {
                 <img src={image} alt={title} className={styles.image} />
               </a>
               <div className={styles.textWrapper}>
+                {/* Відображення logoImage */}
+                {logoImage && (
+                  <div className={styles.logoWrapper}>
+                    <img
+                      src={logoImage}
+                      alt={`${title} Logo`}
+                      className={styles.logoImage}
+                    />
+                  </div>
+                )}
+
                 <h3 className={styles.projectTitle}>{title}</h3>
                 <p className={styles.description}>{description}</p>
                 <div className={styles.techStack}>
