@@ -21,6 +21,7 @@ export const projects = [
     image: "/src/images/sparkart.png",
     demo: "https://dmytrok-goit.github.io/stp-7973//",
     code: "https://github.com/DmytroK-goit/stp-7973",
+    logoImage: "/src/images/art.png",
   },
   {
     id: 5,
@@ -44,6 +45,7 @@ export const projects = [
     image: "/src/images/phonebook.png",
     demo: "https://goit-react-hw-08-pink-one.vercel.app/",
     code: "https://github.com/chasov-artem/goit-react-hw-08",
+    logoImage: "/src/images/phone.png",
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export const projects = [
     image: "/src/images/portfolio.png",
     demo: "https://dmytrok-goit.github.io/project-js-group02/",
     code: "https://github.com/DmytroK-goit/project-js-group02",
+    logoImage: "/src/images/port.png",
   },
   {
     id: 2,

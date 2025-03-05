@@ -60,8 +60,10 @@
 }
 .logoImage {
   position: absolute;
-  top: -75%;
+  top: -100%;
+  left: 15%;
   border-radius: 20px;
+  max-width: 500px;
 }
 
 .projectTitle {
