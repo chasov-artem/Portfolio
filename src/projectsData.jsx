@@ -69,6 +69,7 @@ export const projects = [
     image: "/src/images/watchcharm.png",
     demo: "https://denismayboroda.github.io/project-Do-your-first-step/",
     code: "https://github.com/DenisMayboroda/project-Do-your-first-step",
+    logoImage: "/src/images/watch.png",
   },
   {
     id: 1,
@@ -80,5 +81,6 @@ export const projects = [
     image: "/src/images/webstudio.png",
     demo: "https://chasov-artem.github.io/goit-markup-hw-06/",
     code: "https://github.com/chasov-artem/goit-markup-hw-06/",
+    logoImage: "/src/images/web.png",
   },
 ];
