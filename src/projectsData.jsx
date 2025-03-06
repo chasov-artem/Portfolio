@@ -66,7 +66,7 @@ export const projects = [
       "A website for a wristwatch sales company, featuring a responsive design. I was responsible for developing the sales section. Team project.",
     role: "Scrum Master and Developer",
     tech: ["HTML", "CSS"],
-    image: "/src/images/watchcharm.png",
+    image: "/src/images/watchcharm2.png",
     demo: "https://denismayboroda.github.io/project-Do-your-first-step/",
     code: "https://github.com/DenisMayboroda/project-Do-your-first-step",
     logoImage: "/src/images/watch.png",

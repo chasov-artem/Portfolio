@@ -14,7 +14,7 @@ const Projects = () => {
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.03,
+      lerp: 0.02,
     });
 
     function raf(time) {
@@ -23,6 +23,7 @@ const Projects = () => {
     }
     requestAnimationFrame(raf);
 
+    // Налаштування ScrollTrigger
     ScrollTrigger.scrollerProxy(containerRef.current, {
       scrollTop(value) {
         return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
@@ -40,8 +41,10 @@ const Projects = () => {
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
+    // GSAP-анімації для кожного проекту
     projectsRef.current.forEach((project, index) => {
       if (!project) return;
+
       const isEven = index % 2 === 0;
       const img = project.querySelector(`.${styles.imageWrapper}`);
       const text = project.querySelector(`.${styles.textWrapper}`);
@@ -53,7 +56,7 @@ const Projects = () => {
         x: isEven ? "20%" : "-20%",
       });
 
-      // Таймлайн для зображення
+      // Анімація для зображення
       const imgTl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
@@ -64,22 +67,21 @@ const Projects = () => {
         },
       });
 
-      // З’явлення знизу
-      imgTl.fromTo(
-        img,
-        { opacity: 0, y: "20%", x: isEven ? "20%" : "-20%" },
-        { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
-      );
-      // Зникнення догори
-      imgTl.to(img, {
-        opacity: 0,
-        y: "-20%",
-        x: isEven ? "20%" : "-20%",
-        duration: 0.5,
-        ease: "power2.in",
-      });
+      imgTl
+        .fromTo(
+          img,
+          { opacity: 0, y: "20%", x: isEven ? "20%" : "-20%" },
+          { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
+        )
+        .to(img, {
+          opacity: 0,
+          y: "-20%",
+          x: isEven ? "20%" : "-20%",
+          duration: 0.5,
+          ease: "power2.in",
+        });
 
-      // Таймлайн для тексту
+      // Анімація для тексту
       const textTl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
@@ -90,32 +92,36 @@ const Projects = () => {
         },
       });
 
-      // З’явлення знизу
-      textTl.fromTo(
-        text,
-        { opacity: 0, y: "20%", x: isEven ? "-20%" : "20%" },
-        { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
-      );
-      // Зникнення догори
-      textTl.to(text, {
-        opacity: 0,
-        y: "-20%",
-        x: isEven ? "-20%" : "20%",
-        duration: 0.5,
-        ease: "power2.in",
-      });
+      textTl
+        .fromTo(
+          text,
+          { opacity: 0, y: "20%", x: isEven ? "-20%" : "20%" },
+          { opacity: 1, y: "0%", x: "0%", duration: 0.5, ease: "power2.out" }
+        )
+        .to(text, {
+          opacity: 0,
+          y: "-20%",
+          x: isEven ? "-20%" : "20%",
+          duration: 0.5,
+          ease: "power2.in",
+        });
     });
 
-    // Оновлення після завантаження зображень
+    // Оновлення ScrollTrigger після завантаження зображень
     const images = document.querySelectorAll(`.${styles.image}`);
     images.forEach((img) => {
       img.onload = () => ScrollTrigger.refresh();
     });
 
+    // Додаткове перезавантаження для безпеки
     setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 1000);
+      // Прокрутка до верху (координата 0)
+      lenis.scrollTo(0, { immediate: true });
+      // Повне оновлення ScrollTrigger
+      ScrollTrigger.refresh(true);
+    }, 200);
 
+    // При розмонтуванні знищуємо lenis
     return () => lenis.destroy();
   }, []);
 
@@ -129,6 +135,7 @@ const Projects = () => {
           ) => (
             <div
               key={id}
+              role="article" // Додано атрибут role
               ref={(el) => (projectsRef.current[index] = el)}
               className={`${styles.project} ${
                 index % 2 === 0 ? styles.even : styles.odd
@@ -153,7 +160,6 @@ const Projects = () => {
                     />
                   </div>
                 )}
-
                 <h3 className={styles.projectTitle}>{title}</h3>
                 <p className={styles.description}>{description}</p>
                 <div className={styles.techStack}>
