@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import styles from "./Sidebar.module.css";
 import heroImage from "../../images/hero.png";
+import { PiHeartbeatFill } from "react-icons/pi";
 
 // Реєструємо плагіни
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -21,42 +22,38 @@ const Sidebar = () => {
   const cursorRef = useRef(null);
   const parallaxRef = useRef(null);
   const heroImageRef = useRef(null);
-  const logoSvgRef = useRef(null); // Реф для SVG-логотипу
-  const circleAnimation = useRef(null); // Реф для анімації кола
-  const scrollTextRef = useRef(null); // Реф для нового заголовка
-  const heartRef = useRef(null); // Реф для SVG-серця
+  const logoSvgRef = useRef(null);
+  const circleAnimation = useRef(null);
+  const scrollTextRef = useRef(null);
+  const heartRef = useRef(null);
 
   useEffect(() => {
     // Функція для додавання анімації до кола в SVG
     const addAnimationToCircle = () => {
       const svgElement = logoSvgRef.current;
       if (svgElement) {
-        // Отримуємо доступ до внутрішнього вмісту SVG
         const svgDoc = svgElement.contentDocument;
         if (svgDoc) {
           const circle = svgDoc.querySelector("circle");
           if (circle) {
-            // Створюємо анімацію обертання через GSAP
             circleAnimation.current = gsap.to(circle, {
-              rotation: 360, // Обертання на 360 градусів
-              duration: 2, // Тривалість анімації
-              repeat: -1, // Безкінечне повторення
-              ease: "linear", // Лінійна анімація
-              transformOrigin: "center", // Центр обертання
-              paused: true, // Анімація на паузі за замовчуванням
+              rotation: 360,
+              duration: 2,
+              repeat: -1,
+              ease: "linear",
+              transformOrigin: "center",
+              paused: true,
             });
           }
         }
       }
     };
 
-    // Додаємо обробник події для завантаження SVG
     const svgElement = logoSvgRef.current;
     if (svgElement) {
       svgElement.addEventListener("load", addAnimationToCircle);
     }
 
-    // Прибираємо обробник після завершення
     return () => {
       if (svgElement) {
         svgElement.removeEventListener("load", addAnimationToCircle);
@@ -64,17 +61,16 @@ const Sidebar = () => {
     };
   }, []);
 
-  // Обробники для ховера
   const handleMouseEnter = () => {
     if (circleAnimation.current) {
-      circleAnimation.current.play(); // Запускаємо анімацію
+      circleAnimation.current.play();
     }
   };
 
   const handleMouseLeave = () => {
     if (circleAnimation.current) {
-      circleAnimation.current.pause(); // Зупиняємо анімацію
-      circleAnimation.current.progress(0); // Скидаємо анімацію на початок
+      circleAnimation.current.pause();
+      circleAnimation.current.progress(0);
     }
   };
 
@@ -103,24 +99,37 @@ const Sidebar = () => {
       },
     });
 
-    // Анімація для нового заголовка "Just Scroll It"
-    gsap.to(scrollTextRef.current, {
-      duration: 3,
-      text: "Just Scroll It",
-      ease: "none",
-      delay: 4, // Затримка перед початком анімації
-    });
+    // Анімація для тексту "Just Scroll It"
+    gsap.fromTo(
+      scrollTextRef.current,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 2,
+        delay: 4,
+        ease: "power2.out",
+      }
+    );
 
-    // Анімація для SVG-серця
+    // Анімація для серця
     gsap.fromTo(
       heartRef.current,
-      { scale: 0, opacity: 0 },
+      { opacity: 0, scale: 0 },
       {
-        scale: 1,
         opacity: 1,
+        scale: 1,
         duration: 1,
-        delay: 5, // Затримка перед початком анімації
+        delay: 6,
         ease: "bounce.out",
+        onComplete: () => {
+          gsap.to(heartRef.current, {
+            scale: 1.2,
+            repeat: -1,
+            yoyo: true,
+            duration: 0.5,
+            ease: "power1.inOut",
+          });
+        },
       }
     );
 
@@ -179,6 +188,9 @@ const Sidebar = () => {
 
   return (
     <aside ref={sidebarRef} className={styles.sidebar}>
+      {/* Текст на задньому фоні */}
+      <div className={styles.backgroundText}>~ ChasovDev ~</div>
+
       {/* Логотип через <object> для доступу до внутрішнього вмісту SVG */}
       <div
         className={styles.logoContainer}
@@ -255,20 +267,12 @@ const Sidebar = () => {
         </span>
       </div>
 
-      {/* Новий заголовок "Just Scroll It" з SVG-серцем */}
+      {/* Новий заголовок "Just Scroll It" з пульсуючим серцем */}
       <div className={styles.scrollTextContainer}>
-        <h2 ref={scrollTextRef} className={styles.scrollText}></h2>
-        <svg
-          ref={heartRef}
-          className={styles.heartIcon}
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="red"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-        </svg>
+        <h2 ref={scrollTextRef} className={styles.scrollText}>
+          Just Scroll It
+        </h2>
+        <PiHeartbeatFill ref={heartRef} className={styles.heartIcon} />
       </div>
     </aside>
   );
