@@ -1,10 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
   font-family: "My Font";
   src: url("../src/fonts/TokyoRockstar.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "My Font1";
+  src: url("../src/fonts/20094.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "My Font2";
+  src: url("../src/fonts/20278.otf") format("woff2");
   font-weight: normal;
   font-style: normal;
 }

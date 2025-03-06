@@ -6,6 +6,22 @@
   height: 800px;
 }
 
+/* Текст на задньому фоні */
+.backgroundText {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  transform: translate(-50%, -50%) rotate(-45deg); /* Розміщення та поворот */
+  font-size: 100px; /* Великий розмір тексту */
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.4); /* Напівпрозорий текст */
+  z-index: -1; /* Розміщення позаду основного контенту */
+  user-select: none; /* Заборона виділення тексту */
+  font-family: My Font1;
+  text-decoration: underline;
+  text-underline-offset: 70px;
+}
+
 /* Інші стилі */
 .logoContainer {
   position: absolute;
@@ -15,13 +31,13 @@
 }
 
 .logo {
-  width: 200px; /* Налаштуйте розмір логотипу */
+  width: 200px;
   height: auto;
   transition: transform 0.3s ease;
 }
 
 .logo:hover {
-  fill: whitesmoke; /* Ефект збільшення при наведенні */
+  fill: whitesmoke;
 }
 
 .nav {
@@ -97,7 +113,6 @@
   color: #ccc;
 }
 
-/* Стилі для нового заголовка */
 .scrollTextContainer {
   position: absolute;
   bottom: 20px;
@@ -114,9 +129,12 @@
   font-weight: bold;
   color: white;
   text-align: center;
+  opacity: 0;
 }
 
 .heartIcon {
-  width: 48px; /* Розмір SVG-серця */
+  width: 48px;
   height: 48px;
+  color: red;
+  opacity: 0;
 }
