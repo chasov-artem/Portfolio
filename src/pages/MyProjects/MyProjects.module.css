@@ -80,11 +80,20 @@
   color: rgb(170, 0, 0);
   z-index: 10;
   position: relative;
+  padding: 8px;
 }
 
 .description {
   color: white;
   font-size: 16px;
+  z-index: 10;
+  position: relative;
+  padding: 8px;
+}
+
+.role {
+  color: rgb(170, 0, 0);
+  font-size: 20px;
   z-index: 10;
   position: relative;
 }
@@ -130,6 +139,35 @@
   color: #81c3f7;
 }
 
+.arrows {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 100vh; /* Повна висота вікна */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Одна зверху, інша знизу */
+  pointer-events: none; /* Щоб кліки проходили крізь, окрім іконок */
+  z-index: 9999;
+}
+
+.arrowUp,
+.arrowDown {
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  pointer-events: auto; /* Активує кліки тільки на іконках */
+  transition: color 0.3s;
+}
+
+/* Наводимо курсор */
+.arrowUp:hover,
+.arrowDown:hover {
+  color: #ccc;
+}
+
 /* ==== Планшети (від 768px) ==== */
 @media (min-width: 768px) {
   .title {
@@ -148,6 +186,10 @@
 
   .description {
     font-size: 24px;
+  }
+
+  .role {
+    font-size: 30px;
   }
 
   .tech {
@@ -180,6 +222,10 @@
 
   .description {
     font-size: 32px;
+  }
+
+  .role {
+    font-size: 40px;
   }
 
   .tech {

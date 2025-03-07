@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import styles from "./Sidebar.module.css";
 import heroImage from "../../images/hero.png";
-import { PiHeartbeatFill } from "react-icons/pi";
+import { PiHeartFill } from "react-icons/pi";
 
 // Реєструємо плагіни
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -235,7 +235,7 @@ const Sidebar = () => {
           <FaGithub />
         </a>
         <a
-          href="https://linkedin.com/in/your-linkedin"
+          href="https://linkedin.com/in/artem-chasov-504a351aa"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.icon}
@@ -243,7 +243,7 @@ const Sidebar = () => {
           <FaLinkedin />
         </a>
         <a
-          href="https://t.me/YourTelegramUsername"
+          href="https://t.me/chasovartem"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.icon}
@@ -251,7 +251,7 @@ const Sidebar = () => {
           <FaTelegramPlane />
         </a>
         <a
-          href="https://www.instagram.com/YourInstagram/"
+          href="https://www.instagram.com/be_real_awesome_instead"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.icon}
@@ -272,7 +272,7 @@ const Sidebar = () => {
         <h2 ref={scrollTextRef} className={styles.scrollText}>
           Just Scroll It
         </h2>
-        <PiHeartbeatFill ref={heartRef} className={styles.heartIcon} />
+        <PiHeartFill ref={heartRef} className={styles.heartIcon} />
       </div>
     </aside>
   );
