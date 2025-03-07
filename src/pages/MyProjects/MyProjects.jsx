@@ -127,6 +127,7 @@ const Projects = () => {
 
   return (
     <section ref={containerRef} className={styles.projectsContainer}>
+      <h2 className={styles.title}>My Projects</h2>
       <div className={styles.projectsList}>
         {projects.map(
           (
