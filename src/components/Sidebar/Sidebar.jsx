@@ -38,7 +38,7 @@ const Sidebar = () => {
           if (circle) {
             circleAnimation.current = gsap.to(circle, {
               rotation: 360,
-              duration: 2,
+              duration: 1,
               repeat: -1,
               ease: "linear",
               transformOrigin: "center",
@@ -95,7 +95,7 @@ const Sidebar = () => {
       ease: "none",
       delay: 1,
       onComplete: () => {
-        gsap.to(cursorRef.current, { opacity: 0, duration: 0.3 });
+        gsap.to(cursorRef.current, { opacity: 0, duration: 0.5 });
       },
     });
 
@@ -106,7 +106,7 @@ const Sidebar = () => {
       {
         opacity: 1,
         duration: 2,
-        delay: 4,
+        delay: 2,
         ease: "power2.out",
       }
     );
@@ -119,7 +119,7 @@ const Sidebar = () => {
         opacity: 1,
         scale: 1,
         duration: 1,
-        delay: 6,
+        delay: 3,
         ease: "bounce.out",
         onComplete: () => {
           gsap.to(heartRef.current, {
@@ -178,8 +178,8 @@ const Sidebar = () => {
         delay: 0.5,
         scrollTrigger: {
           trigger: heroImageRef.current,
-          start: "top 80%",
-          end: "top 50%",
+          start: "top 40%",
+          end: "top -40%",
           scrub: true,
         },
       }
@@ -189,7 +189,7 @@ const Sidebar = () => {
   return (
     <aside ref={sidebarRef} className={styles.sidebar}>
       {/* Текст на задньому фоні */}
-      <div className={styles.backgroundText}>~ ChasovDev ~</div>
+      <div className={styles.backgroundText}>^~ ChasovDev ~\|</div>
 
       {/* Логотип через <object> для доступу до внутрішнього вмісту SVG */}
       <div
@@ -232,7 +232,7 @@ const Sidebar = () => {
           rel="noopener noreferrer"
           className={styles.icon}
         >
-          <FaGithub size={32} />
+          <FaGithub />
         </a>
         <a
           href="https://linkedin.com/in/your-linkedin"
@@ -240,7 +240,7 @@ const Sidebar = () => {
           rel="noopener noreferrer"
           className={styles.icon}
         >
-          <FaLinkedin size={32} />
+          <FaLinkedin />
         </a>
         <a
           href="https://t.me/YourTelegramUsername"
@@ -248,7 +248,7 @@ const Sidebar = () => {
           rel="noopener noreferrer"
           className={styles.icon}
         >
-          <FaTelegramPlane size={32} />
+          <FaTelegramPlane />
         </a>
         <a
           href="https://www.instagram.com/YourInstagram/"
@@ -256,7 +256,7 @@ const Sidebar = () => {
           rel="noopener noreferrer"
           className={styles.icon}
         >
-          <FaInstagram size={32} />
+          <FaInstagram />
         </a>
       </div>
 

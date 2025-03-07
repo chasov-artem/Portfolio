@@ -1,11 +1,20 @@
+/* ==== БАЗОВІ (Mobile, від 320px і більше) ==== */
 .projectsContainer {
   display: flex;
   flex-direction: column;
+  /* min-width: 320px; */
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.title {
+  font-size: 10px;
+  color: white;
+  margin-bottom: 50px;
 }
 
 .projectsList {
@@ -18,11 +27,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  width: 80vw;
+  gap: 10px;
+  min-width: 30vh;
   opacity: 1;
   transition: opacity 0.1s ease-out;
-  padding: 0 200px;
+  padding: 10px;
 }
 
 .even {
@@ -52,25 +61,22 @@
 }
 
 .textWrapper {
-  max-width: 500px;
+  max-width: 700px;
   text-align: center;
   flex: 1;
-  max-width: 700px;
   position: relative;
 }
+
 .logoImage {
-  position: absolute;
-  top: -100%;
-  left: 15%;
+  /* position: absolute;
+  top: -25%;
+  left: 0%; */
   border-radius: 20px;
-  max-width: 540px;
+  width: 100%;
 }
 
 .projectTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  font-size: 64px;
+  font-size: 32px;
   color: rgb(170, 0, 0);
   z-index: 10;
   position: relative;
@@ -78,7 +84,7 @@
 
 .description {
   color: white;
-  font-size: 32px;
+  font-size: 16px;
   z-index: 10;
   position: relative;
 }
@@ -98,7 +104,7 @@
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1rem;
   z-index: 10;
   position: relative;
 }
@@ -107,20 +113,80 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  font-size: 32px;
+  font-size: 16px;
   z-index: 10;
   position: relative;
 }
 
 .link {
-  color: #4ea8de;
+  color: rgb(170, 0, 0);
   display: flex;
   align-items: center;
   gap: 0.3rem;
   transition: color 0.3s;
-  color: rgb(170, 0, 0);
 }
 
 .link:hover {
   color: #81c3f7;
+}
+
+/* ==== Планшети (від 768px) ==== */
+@media (min-width: 768px) {
+  .title {
+    font-size: 64px;
+  }
+
+  .project {
+    width: 85vw;
+    padding: 0 100px;
+    gap: 30px;
+  }
+
+  .projectTitle {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 24px;
+  }
+
+  .tech {
+    font-size: 1.5rem;
+  }
+
+  .links {
+    font-size: 24px;
+  }
+}
+
+/* ==== Десктопи (від 1024px) ==== */
+@media (min-width: 1024px) {
+  .projectsContainer {
+    gap: 130px;
+  }
+  .title {
+    font-size: 96px;
+  }
+
+  .project {
+    width: 80vw;
+    padding: 0 200px;
+    gap: 60px;
+  }
+
+  .projectTitle {
+    font-size: 64px;
+  }
+
+  .description {
+    font-size: 32px;
+  }
+
+  .tech {
+    font-size: 2rem;
+  }
+
+  .links {
+    font-size: 32px;
+  }
 }
