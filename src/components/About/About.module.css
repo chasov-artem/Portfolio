@@ -1,0 +1,117 @@
+.aboutSection {
+  min-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+
+  padding: 40px 20px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 120px;
+  text-align: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.description {
+  color: white;
+  font-size: 16px;
+  z-index: 10;
+  position: relative;
+  padding: 8px;
+  max-width: 50%;
+  text-align: start;
+  justify-content: start;
+  display: flex;
+  margin-bottom: 100px;
+}
+
+.smallTitle {
+  font-size: 14px;
+  z-index: 10;
+  margin-bottom: 30px;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: start;
+  z-index: 10;
+  margin-bottom: 20px;
+}
+
+.techItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  z-index: 10;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.photo {
+  position: absolute;
+  max-width: 300px;
+  right: 0;
+  top: 0;
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 64px;
+  }
+  .description {
+    font-size: 24px;
+  }
+
+  .smallTitle {
+    font-size: 52px;
+  }
+
+  .techItem {
+    width: 60px;
+  }
+
+  .photo {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 96px;
+  }
+  .description {
+    font-size: 32px;
+  }
+
+  .smallTitle {
+    font-size: 72px;
+  }
+
+  .techItem {
+    width: 80px;
+  }
+  .photo {
+    max-width: 700px;
+  }
+}

@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
-
-// Іконки
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -12,13 +10,11 @@ import {
 } from "react-icons/fa";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare } from "react-icons/fa";
 import { SiRedux } from "react-icons/si";
-
 import styles from "./MyProjects.module.css";
 import { projects } from "../../projectsData";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Відповідність стеку і його іконки
 const techIcons = {
   HTML: <FaHtml5 />,
   CSS: <FaCss3 />,
@@ -26,15 +22,14 @@ const techIcons = {
   React: <FaReact />,
   Redux: <SiRedux />,
   Node: <FaNodeJs />,
-  // Додавайте інші стек-технології
 };
 
 const Projects = () => {
   const containerRef = useRef(null);
   const projectsRef = useRef([]);
-  const myProjectsTitleRef = useRef(null); // Заголовок "My Projects"
-  const arrowsRef = useRef(null); // Контейнер для стрілок
-  const lenisRef = useRef(null); // Збережемо Lenis тут
+  const myProjectsTitleRef = useRef(null);
+  const arrowsRef = useRef(null);
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis({

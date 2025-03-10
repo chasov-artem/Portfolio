@@ -178,8 +178,8 @@ const Sidebar = () => {
         delay: 0.5,
         scrollTrigger: {
           trigger: heroImageRef.current,
-          start: "top 40%",
-          end: "top -40%",
+          start: "top 100%",
+          end: "top 10%",
           scrub: true,
         },
       }
@@ -189,7 +189,7 @@ const Sidebar = () => {
   return (
     <aside ref={sidebarRef} className={styles.sidebar}>
       {/* Текст на задньому фоні */}
-      <div className={styles.backgroundText}>^~ ChasovDev ~\|</div>
+      <div className={styles.backgroundText}>~Portfolio~</div>
 
       {/* Логотип через <object> для доступу до внутрішнього вмісту SVG */}
       <div
