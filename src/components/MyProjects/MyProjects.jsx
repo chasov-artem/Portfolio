@@ -82,8 +82,8 @@ const Projects = () => {
     gsap.set(arrowsRef.current, { autoAlpha: 0 });
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top bottom", // Коли верх секції з'являється знизу
-      end: "bottom top", // Коли низ секції уходить нагору
+      start: "top bottom",
+      end: "bottom top",
       scroller: containerRef.current,
       onEnter: () => gsap.to(arrowsRef.current, { autoAlpha: 1 }),
       onLeave: () => gsap.to(arrowsRef.current, { autoAlpha: 0 }),
@@ -195,7 +195,6 @@ const Projects = () => {
         <FaChevronDown className={styles.arrowDown} onClick={scrollToBottom} />
       </div>
 
-      {/* Заголовок з посиланням на нього для анімації */}
       <h2 ref={myProjectsTitleRef} className={styles.title}>
         My Projects
       </h2>
