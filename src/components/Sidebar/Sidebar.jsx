@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import { Link } from "react-router-dom";
 import {
   FaGithub,
   FaInstagram,
@@ -206,15 +205,12 @@ const Sidebar = () => {
       </div>
 
       <nav className={styles.nav}>
-        <Link to="/" className={styles.navLink}>
-          Projects
-        </Link>
-        <Link to="/about" className={styles.navLink}>
+        <a href="#about" className={styles.navLink}>
           About
-        </Link>
-        <Link to="/contact" className={styles.navLink}>
-          Contact
-        </Link>
+        </a>
+        <a href="#myProjects" className={styles.navLink}>
+          Projects
+        </a>
       </nav>
 
       <img

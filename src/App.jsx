@@ -3,6 +3,7 @@ import About from "./components/About/About";
 import Projects from "./components/MyProjects/MyProjects";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./App.css";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Sidebar />
           <About />
           <Projects />
+          <Footer />
           <div className="flex-1 p-6"></div>
         </div>
       </div>

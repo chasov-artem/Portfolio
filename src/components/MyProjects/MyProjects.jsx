@@ -188,7 +188,11 @@ const Projects = () => {
   };
 
   return (
-    <section ref={containerRef} className={styles.projectsContainer}>
+    <section
+      id="myProjects"
+      ref={containerRef}
+      className={styles.projectsContainer}
+    >
       {/* Стрілки вгору/вниз */}
       <div ref={arrowsRef} className={styles.arrows}>
         <FaChevronUp className={styles.arrowUp} onClick={scrollToTop} />
