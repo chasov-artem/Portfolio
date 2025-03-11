@@ -108,7 +108,7 @@ const About = () => {
   }, []);
 
   return (
-    <section ref={aboutRef} className={styles.aboutSection}>
+    <section id="about" ref={aboutRef} className={styles.aboutSection}>
       <h2 ref={aboutTitleRef} className={styles.title}></h2>
 
       <p ref={aboutTextRef} className={styles.description}>
