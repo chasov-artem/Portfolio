@@ -10,7 +10,7 @@ import {
   FaTelegramPlane,
 } from "react-icons/fa";
 import styles from "./Sidebar.module.css";
-import heroImage from "../../images/hero.png";
+import heroImage from "../../../public/images/hero.png";
 import { PiHeartFill } from "react-icons/pi";
 
 // Реєструємо плагіни
@@ -188,10 +188,8 @@ const Sidebar = () => {
 
   return (
     <aside ref={sidebarRef} className={styles.sidebar}>
-      {/* Текст на задньому фоні */}
       <div className={styles.backgroundText}>~Portfolio~</div>
 
-      {/* Логотип через <object> для доступу до внутрішнього вмісту SVG */}
       <div
         className={styles.logoContainer}
         onMouseEnter={handleMouseEnter}
@@ -267,7 +265,6 @@ const Sidebar = () => {
         </span>
       </div>
 
-      {/* Новий заголовок "Just Scroll It" з пульсуючим серцем */}
       <div className={styles.scrollTextContainer}>
         <h2 ref={scrollTextRef} className={styles.scrollText}>
           Just Scroll It

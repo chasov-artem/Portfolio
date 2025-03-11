@@ -14,7 +14,7 @@ import {
 import { SiTypescript } from "react-icons/si";
 
 import styles from "./About.module.css";
-import me from "../../images/me.png";
+import me from "../../../public/images/me.png";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -45,8 +45,8 @@ const About = () => {
       scrollTrigger: {
         trigger: aboutRef.current,
         start: "top top",
-        end: "100px top",
-        scrub: true, // Якщо не хочеш fade out під час скролу — прибери scrub
+        end: "900px top",
+        scrub: true,
       },
     });
 
@@ -70,8 +70,7 @@ const About = () => {
         scrollTrigger: {
           trigger: aboutTextRef.current,
           start: "top 80%",
-          // end не потрібен, якщо хочемо разовий ефект
-          toggleActions: "play none none none", // щоб не блимало
+          toggleActions: "play none none none",
         },
       }
     );
@@ -101,8 +100,8 @@ const About = () => {
         duration: 1.5,
         scrollTrigger: {
           trigger: techStackRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none", // один раз
+          start: "top 100%",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -110,17 +109,14 @@ const About = () => {
 
   return (
     <section ref={aboutRef} className={styles.aboutSection}>
-      {/* Заголовок */}
       <h2 ref={aboutTitleRef} className={styles.title}></h2>
 
-      {/* Опис */}
       <p ref={aboutTextRef} className={styles.description}>
         Passionate Front-End Developer skilled in HTML, CSS, JavaScript, React,
         and Redux, focused on creating user-friendly web solutions. Always eager
         to learn and grow in dynamic, fast-paced environments.
       </p>
 
-      {/* Блок стеку */}
       <h3 className={styles.smallTitle}>Tech Stacks:</h3>
       <div ref={techStackRef} className={styles.techStack}>
         <div className={styles.techItem}>
@@ -149,7 +145,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Фото */}
       <img ref={aboutPhotoRef} className={styles.photo} src={me} alt="Me" />
     </section>
   );

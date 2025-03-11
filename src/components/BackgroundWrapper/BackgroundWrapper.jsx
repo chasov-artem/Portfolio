@@ -1,4 +1,4 @@
-import bg from "../../images/bg-dg.jpg";
+import bg from "../../../public/images/bg-dg.jpg";
 
 const BackgroundWrapper = ({ children }) => {
   return (
