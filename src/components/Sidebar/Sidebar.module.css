@@ -10,7 +10,6 @@
   box-sizing: border-box;
 }
 
-/* Текст на задньому фоні */
 .backgroundText {
   position: absolute;
   top: 70%;
@@ -26,7 +25,6 @@
   text-underline-offset: 30px;
 }
 
-/* Інші стилі */
 .logoContainer {
   position: absolute;
   top: 5px;
@@ -144,7 +142,6 @@
   opacity: 0;
 }
 
-/* ==== Планшети (від 768px) ==== */
 @media (min-width: 768px) {
   .sidebar {
     padding: 20px;
@@ -202,7 +199,6 @@
   }
 }
 
-/* ==== Десктопи (від 1024px) ==== */
 @media (min-width: 1024px) {
   .sidebar {
     padding: 20px;
