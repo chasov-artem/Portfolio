@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="750" height="450" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="50%" y="75%" font-family="My Font" font-size="60" font-weight="bold" fill="white" text-anchor="middle">ChasovDev</text>
+  <circle cx="250" cy="100" r="60" stroke="white" stroke-width="20" fill="none" stroke-linecap="line" stroke-dasharray="9,10"/>
+  <text x="250" y="115" font-family="Arial" font-size="50" fill="white" text-anchor="middle">&lt;/&gt;</text>
+</svg>
