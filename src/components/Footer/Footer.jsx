@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className={styles.contactMe}>
+    <div id="myContacts" className={styles.contactMe}>
       <h2 className={styles.title}>Contact me:</h2>
       <p className={styles.email}>Email: chasov90@gmail.com</p>
 
