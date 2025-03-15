@@ -211,6 +211,9 @@ const Sidebar = () => {
         <a href="#myProjects" className={styles.navLink}>
           Projects
         </a>
+        <a href="#myContacts" className={styles.navLink}>
+          Contacts
+        </a>
       </nav>
 
       <img
