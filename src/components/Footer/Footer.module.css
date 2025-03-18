@@ -1,16 +1,16 @@
 .contactMe {
   padding: 40px;
-  position: relative; /* щоб можна було позиціонувати logoRight */
+  position: relative;
 }
 
 .logoRight {
   position: absolute;
-  bottom: 10px; /* регулюй, щоб було де треба */
-  right: 10px; /* зсунути праворуч */
+  bottom: 10px;
+  right: 10px;
 }
 
 .logo {
-  width: 80px; /* підлаштуй */
+  width: 80px;
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -19,7 +19,6 @@
   transform: scale(1.1);
 }
 
-/* Інші стилі, які були */
 .title {
   color: white;
   text-align: center;
@@ -34,14 +33,19 @@
   font-size: 16px;
 }
 
+.emailLink {
+  color: white;
+}
+
 .socials {
   display: flex;
-  gap: 8px;
+  gap: 20px;
 }
 
 .socialsWrap {
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  align-items: center;
 }
 
 .socialTitle {
@@ -52,6 +56,8 @@
 .icon {
   color: white;
   transition: color 0.3s;
+  width: 24px;
+  height: 24px;
 }
 
 .icon:hover {
@@ -66,6 +72,10 @@
     font-size: 24px;
   }
 
+  .socialsWrap {
+    gap: 25px;
+  }
+
   .socials {
     gap: 20px;
   }
@@ -75,8 +85,8 @@
   }
 
   .icon {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
   }
 
   .logo {
@@ -93,7 +103,7 @@
   }
 
   .socials {
-    gap: 25px;
+    gap: 30px;
   }
 
   .socialTitle {
@@ -101,11 +111,11 @@
   }
 
   .icon {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
   }
   .socialsWrap {
-    gap: 10px;
+    gap: 40px;
   }
 
   .logo {

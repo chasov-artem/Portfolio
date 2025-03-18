@@ -1,11 +1,9 @@
 .aboutSection {
   min-height: 80vh;
-
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
-
   padding: 100px 20px;
   color: #fff;
   position: relative;
@@ -31,7 +29,7 @@
   text-align: start;
   justify-content: start;
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .smallTitle {
@@ -49,11 +47,29 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 767px) {
+  .techStack {
+    justify-content: space-between;
+  }
+  .techItem {
+    width: calc(33.33% - 14px);
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .techStack {
+    justify-content: start;
+  }
+  .techItem {
+    width: auto;
+  }
+}
+
 .techItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40px;
   z-index: 10;
 }
 
@@ -71,7 +87,7 @@
   position: absolute;
   max-width: 300px;
   right: 0;
-  top: 0;
+  top: 20;
   opacity: 0.7;
 }
 

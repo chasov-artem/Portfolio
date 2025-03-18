@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-
-// Іконки
 import {
   FaHtml5,
   FaCss3Alt,
@@ -19,11 +17,11 @@ import me from "../../../public/images/me.png";
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const About = () => {
-  const aboutRef = useRef(null); // Секція
-  const aboutTitleRef = useRef(null); // Заголовок (TextPlugin)
-  const aboutTextRef = useRef(null); // Основний текст
-  const techStackRef = useRef(null); // Блок стеку
-  const aboutPhotoRef = useRef(null); // Фото
+  const aboutRef = useRef(null);
+  const aboutTitleRef = useRef(null);
+  const aboutTextRef = useRef(null);
+  const techStackRef = useRef(null);
+  const aboutPhotoRef = useRef(null);
 
   useEffect(() => {
     if (
