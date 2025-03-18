@@ -27,7 +27,7 @@ const Sidebar = () => {
   const heartRef = useRef(null);
 
   useEffect(() => {
-    // Функція для додавання анімації до кола в SVG
+    // Функція для анімації кола в SVG
     const addAnimationToCircle = () => {
       const svgElement = logoSvgRef.current;
       if (svgElement) {
@@ -41,7 +41,7 @@ const Sidebar = () => {
               repeat: -1,
               ease: "linear",
               transformOrigin: "center",
-              paused: true,
+              paused: true, // крутитиметься лише при hover
             });
           }
         }
@@ -60,6 +60,7 @@ const Sidebar = () => {
     };
   }, []);
 
+  // Hover-анімація для логотипа
   const handleMouseEnter = () => {
     if (circleAnimation.current) {
       circleAnimation.current.play();
@@ -74,115 +75,118 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
+    // Перевірка, чи всі рефи доступні
     if (
-      !sidebarRef.current ||
-      !titleRef.current ||
-      !cursorRef.current ||
-      !parallaxRef.current ||
-      !heroImageRef.current ||
-      !scrollTextRef.current ||
-      !heartRef.current
+      sidebarRef.current &&
+      titleRef.current &&
+      cursorRef.current &&
+      parallaxRef.current &&
+      heroImageRef.current &&
+      scrollTextRef.current &&
+      heartRef.current
     ) {
-      console.error("One or more refs are missing!");
-      return;
-    }
-
-    // Анімація для основного заголовка
-    gsap.to(titleRef.current, {
-      duration: 3,
-      text: "Hi! I'm Artem, Front-End Developer :)",
-      ease: "none",
-      delay: 1,
-      onComplete: () => {
-        gsap.to(cursorRef.current, { opacity: 0, duration: 0.5 });
-      },
-    });
-
-    // Анімація для тексту "Just Scroll It"
-    gsap.fromTo(
-      scrollTextRef.current,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 2,
-        delay: 2,
-        ease: "power2.out",
-      }
-    );
-
-    // Анімація для серця
-    gsap.fromTo(
-      heartRef.current,
-      { opacity: 0, scale: 0 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        delay: 3,
-        ease: "bounce.out",
+      // Анімація для основного заголовка (друкованого)
+      gsap.to(titleRef.current, {
+        duration: 3,
+        text: "Hi! I'm Artem, Front-End Developer :)",
+        ease: "none",
+        delay: 1,
         onComplete: () => {
-          gsap.to(heartRef.current, {
-            scale: 1.2,
-            repeat: -1,
-            yoyo: true,
-            duration: 0.5,
-            ease: "power1.inOut",
-          });
+          gsap.to(cursorRef.current, { opacity: 0, duration: 0.5 });
         },
-      }
-    );
+      });
 
-    // Інші анімації (Sidebar, курсор, паралакс, зображення)
-    gsap.to(sidebarRef.current, {
-      opacity: 0,
-      y: -50,
-      duration: 1.5,
-      scrollTrigger: {
-        trigger: sidebarRef.current,
-        start: "top top",
-        end: "100px top",
-        scrub: true,
-      },
-    });
+      // Анімація для тексту "Just Scroll It"
+      gsap.fromTo(
+        scrollTextRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 2,
+          delay: 2,
+          ease: "power2.out",
+        }
+      );
 
-    gsap.to(cursorRef.current, {
-      opacity: 0,
-      repeat: -1,
-      yoyo: true,
-      duration: 0.5,
-      ease: "power1.inOut",
-    });
+      // Анімація для серця
+      gsap.fromTo(
+        heartRef.current,
+        { opacity: 0, scale: 0 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          delay: 3,
+          ease: "bounce.out",
+          onComplete: () => {
+            gsap.to(heartRef.current, {
+              scale: 1.2,
+              repeat: -1,
+              yoyo: true,
+              duration: 0.5,
+              ease: "power1.inOut",
+            });
+          },
+        }
+      );
 
-    gsap.fromTo(
-      parallaxRef.current,
-      { y: 0 },
-      {
-        y: -100,
+      // Анімація зникнення Sidebar при скролі
+      gsap.to(sidebarRef.current, {
+        opacity: 0,
+        y: -50,
+        duration: 1.5,
         scrollTrigger: {
           trigger: sidebarRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      heroImageRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        delay: 0.5,
-        scrollTrigger: {
-          trigger: heroImageRef.current,
-          start: "top 100%",
-          end: "top 10%",
+          start: "top top",
+          end: "100px top",
           scrub: true,
         },
-      }
-    );
+      });
+
+      // Анімація курсора
+      gsap.to(cursorRef.current, {
+        opacity: 0,
+        repeat: -1,
+        yoyo: true,
+        duration: 0.5,
+        ease: "power1.inOut",
+      });
+
+      // Паралакс для блоку titleContainer
+      gsap.fromTo(
+        parallaxRef.current,
+        { y: 0 },
+        {
+          y: -100,
+          scrollTrigger: {
+            trigger: sidebarRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
+
+      // Плавна поява heroImage
+      gsap.fromTo(
+        heroImageRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          delay: 0.5,
+          scrollTrigger: {
+            trigger: heroImageRef.current,
+            start: "top 100%",
+            end: "top 10%",
+            scrub: true,
+          },
+        }
+      );
+    } else {
+      console.error("One or more refs are missing!");
+    }
   }, []);
 
   return (
@@ -222,6 +226,7 @@ const Sidebar = () => {
         src={heroImage}
         alt="hero"
       />
+
       <div className={styles.socials}>
         <a
           href="https://github.com/chasov-artem"
@@ -258,10 +263,13 @@ const Sidebar = () => {
       </div>
 
       <div ref={parallaxRef} className={styles.titleContainer}>
-        <h1 ref={titleRef} className={styles.title}></h1>
-        <span ref={cursorRef} className={styles.cursor}>
-          |
-        </span>
+        {/* Резервуємо місце для друкованого тексту, щоб не було «стриба́нь» */}
+        <div className={styles.titleWrap}>
+          <h1 ref={titleRef} className={styles.title}></h1>
+          <span ref={cursorRef} className={styles.cursor}>
+            |
+          </span>
+        </div>
       </div>
 
       <div className={styles.scrollTextContainer}>

@@ -10,7 +10,12 @@ const Footer = () => {
   return (
     <div id="myContacts" className={styles.contactMe}>
       <h2 className={styles.title}>Contact me:</h2>
-      <p className={styles.email}>Email: chasov90@gmail.com</p>
+      <p className={styles.email}>
+        Email:{" "}
+        <a href="mailto:chasov90@gmail.com" className={styles.emailLink}>
+          chasov90@gmail.com
+        </a>
+      </p>
 
       <div className={styles.socialsWrap}>
         <p className={styles.socialTitle}>Socials:</p>
