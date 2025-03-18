@@ -43,7 +43,7 @@ export const projects = [
     role: "Front-End Developer",
     tech: ["React", "Redux", "JWT"],
     image: "/images/phonebook.png",
-    demo: "https://phonebook.chasov-dev.com/",
+    demo: "https://phonebook.chasov-dev.com",
     code: "https://github.com/chasov-artem/goit-react-hw-08",
     logoImage: "/images/phone.png",
   },
