@@ -34,7 +34,7 @@ const Projects = () => {
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.02,
+      lerp: 0.03,
     });
     lenisRef.current = lenis;
 

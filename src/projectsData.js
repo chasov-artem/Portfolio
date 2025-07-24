@@ -1,5 +1,41 @@
 export const projects = [
   {
+    id: 10,
+    title: "Posts App2",
+    description:
+      "Posts App2 is a Flutter Web app with full CRUD for posts, using Provider for state management and JSONPlaceholder as a REST API. Features include post search, create, edit, delete, and responsive Material UI. Deployed on Vercel for fast, scalable hosting.",
+    role: "Front-End Developer",
+    tech: ["Flutter"],
+    image: "/images/posts2-1.png",
+    demo: "https://postsapp2.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/DOiT-2",
+    logoImage: "/images/posts2-2.png",
+  },
+  {
+    id: 9,
+    title: "Posts App",
+    description:
+      "A responsive blog demo built with Next.js, Material-UI, and Redux. Features post browsing, creation, deletion, comments, search, and theme switching. Uses JSONPlaceholder API for mock data.",
+    role: "Front-End Developer",
+    tech: ["Next", "Redux", "Material-UI"],
+    image: "/images/posts-1.png",
+    demo: "https://postsapp.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/DOiT",
+    logoImage: "/images/posts-2.png",
+  },
+  {
+    id: 8,
+    title: "CRM",
+    description:
+      "This is a learning CRM project built with Next.js 14, React Query, and mock APIs. It demonstrates dynamic routing, server-side rendering, and modern UI features like modal forms and real-time data updates.",
+    role: "Front-End Developer",
+    tech: ["Next", "React Query"],
+    image: "/images/crm1.png",
+    demo: "https://crm.chasov-dev.com/dashboard",
+    code: "https://github.com/chasov-artem/crm",
+    logoImage: "/images/crm2.png",
+  },
+  {
     id: 7,
     title: "TravelTrucks",
     description:
