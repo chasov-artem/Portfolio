@@ -111,7 +111,7 @@ const Projects = () => {
       const imgTl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
-          start: "top 50%",
+          start: "top 90%",
           end: "top -50%",
           scrub: 1,
           scroller: containerRef.current,
@@ -136,7 +136,7 @@ const Projects = () => {
       const textTl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
-          start: "top 50%",
+          start: "top 90%",
           end: "top -50%",
           scrub: 1,
           scroller: containerRef.current,
