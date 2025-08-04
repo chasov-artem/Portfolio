@@ -99,7 +99,7 @@ export const projects = [
     id: 5,
     title: "AquaTrack",
     description:
-      "This is an application for controlling water consumption. With a backend created for the needs of the application, with login, responsive design, and features for controlling water consumption. I was responsible for developing the user panel section. Team project.",
+      "This is an app for controlling water consumption. With a backend created for the needs of the application, with login, responsive design, and water controlling features. I was responsible for the user panel section.",
     role: "Scrum Master and Front-End Developer",
     tech: ["React", "Redux", "Node"],
     image: "/images/aquatrack.png",
