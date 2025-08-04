@@ -1,5 +1,41 @@
 export const projects = [
   {
+    id: 13,
+    title: "Billiard-servis",
+    description:
+      "This is my first commercial web catalog project for billiards products, built with React and Firebase. It features CSV product import, an admin panel for catalog management, and a responsive, modern UI. The tech stack includes React, CSS Modules, and Firebase for backend and hosting.",
+    role: "Front-End Developer",
+    tech: ["React", "Firebase", "CSS"],
+    image: "/images/billiard.png",
+    demo: "https://www.billiard-servis.com/",
+    code: "https://github.com/chasov-artem/billirds-catalog",
+    logoImage: "/images/billiard1.png",
+  },
+  {
+    id: 12,
+    title: "Organic",
+    description:
+      "Organic is a responsive eco‑products landing page with a clean, modern design and adaptive layout. Built with HTML, CSS, and JavaScript, it delivers a fast, user‑friendly browsing experience and is deployed on Vercel.",
+    role: "Front-End Developer",
+    tech: ["JS", "HTML", "CSS"],
+    image: "/images/organic.png",
+    demo: "https://organic.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/organic-repo",
+    logoImage: "/images/organic1.png",
+  },
+  {
+    id: 11,
+    title: "Flights App",
+    description:
+      "Flights is a responsive web application for searching and browsing flight options in real time. It features a clean, modern UI built with React and modular CSS, focusing on speed and user-friendly interactions. The project demonstrates API data fetching, dynamic rendering of flight results, and smooth navigation for both desktop and mobile users.",
+    role: "Front-End Developer",
+    tech: ["React", "CSS"],
+    image: "/images/flights.png",
+    demo: "https://flights.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/flights",
+    logoImage: "/images/flights1.png",
+  },
+  {
     id: 10,
     title: "Posts App2",
     description:

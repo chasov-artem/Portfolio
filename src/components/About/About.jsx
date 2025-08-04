@@ -9,7 +9,7 @@ import {
   FaReact,
   FaNodeJs,
 } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiNextdotjs } from "react-icons/si";
 
 import styles from "./About.module.css";
 import me from "../../../public/images/me.png";
@@ -140,6 +140,10 @@ const About = () => {
         <div className={styles.techItem}>
           <SiTypescript className={styles.icon} />
           <span>TypeScript</span>
+        </div>
+        <div className={styles.techItem}>
+          <SiNextdotjs className={styles.icon} />
+          <span>Next.js</span>
         </div>
       </div>
 

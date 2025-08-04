@@ -9,7 +9,7 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare } from "react-icons/fa";
-import { SiRedux } from "react-icons/si";
+import { SiRedux, SiNextdotjs } from "react-icons/si";
 import styles from "./MyProjects.module.css";
 import { projects } from "../../projectsData";
 
@@ -22,6 +22,7 @@ const techIcons = {
   React: <FaReact />,
   Redux: <SiRedux />,
   Node: <FaNodeJs />,
+  Next: <SiNextdotjs />,
 };
 
 const Projects = () => {
