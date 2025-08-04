@@ -3,7 +3,7 @@ export const projects = [
     id: 13,
     title: "Billiard-servis",
     description:
-      "This is my first commercial web catalog project for billiards products, built with React and Firebase. It features CSV product import, an admin panel for catalog management, and a responsive, modern UI. The tech stack includes React, CSS Modules, and Firebase for backend and hosting.",
+      "This is my first commercial web catalog project for billiards products. It features CSV product import, an admin panel for catalog management, and a responsive, modern UI.",
     role: "Front-End Developer",
     tech: ["React", "Firebase", "CSS"],
     image: "/images/billiard.png",
@@ -15,7 +15,7 @@ export const projects = [
     id: 12,
     title: "Organic",
     description:
-      "Organic is a responsive eco‑products landing page with a clean, modern design and adaptive layout. Built with HTML, CSS, and JavaScript, it delivers a fast, user‑friendly browsing experience and is deployed on Vercel.",
+      "Organic is a responsive eco‑products landing page with a clean, modern design and adaptive layout.",
     role: "Front-End Developer",
     tech: ["JS", "HTML", "CSS"],
     image: "/images/organic.png",
@@ -39,7 +39,7 @@ export const projects = [
     id: 10,
     title: "Posts App2",
     description:
-      "Posts App2 is a Flutter Web app with full CRUD for posts, using Provider for state management and JSONPlaceholder as a REST API. Features include post search, create, edit, delete, and responsive Material UI. Deployed on Vercel for fast, scalable hosting.",
+      "Posts App2 is a Flutter Web app with full CRUD for posts, using Provider for state management and JSONPlaceholder as a REST API.",
     role: "Front-End Developer",
     tech: ["Flutter"],
     image: "/images/posts2-1.png",
