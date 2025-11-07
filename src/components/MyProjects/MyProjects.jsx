@@ -112,7 +112,7 @@ const Projects = () => {
         scrollTrigger: {
           trigger: project,
           start: "top 90%",
-          end: "top -50%",
+          end: "top -110%",
           scrub: 1,
           scroller: containerRef.current,
         },
@@ -137,7 +137,7 @@ const Projects = () => {
         scrollTrigger: {
           trigger: project,
           start: "top 90%",
-          end: "top -50%",
+          end: "top -110%",
           scrub: 1,
           scroller: containerRef.current,
         },

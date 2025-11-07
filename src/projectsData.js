@@ -1,5 +1,17 @@
 export const projects = [
   {
+    id: 14,
+    title: "LearnLingo",
+    description:
+      "A web application for an online language learning platform. Built with React, Firebase (Auth & Realtime Database).",
+    role: "Front-End Developer",
+    tech: ["React", "Firebase", "CSS"],
+    image: "/images/learnlingo.png",
+    demo: "https://learnlingo.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/english",
+    logoImage: "/images/learnlingo1.png",
+  },
+  {
     id: 13,
     title: "Billiard-servis",
     description:
