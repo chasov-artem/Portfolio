@@ -74,18 +74,19 @@ const Projects = () => {
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
-    // Паралакс + зникнення для заголовка "My Projects"
+    // Плавна поява заголовка "My Projects" без зникнення
     gsap.fromTo(
       myProjectsTitleRef.current,
-      { opacity: 1, y: 0 },
+      { opacity: 0, y: 20 },
       {
-        opacity: 0,
-        y: -50,
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top top",
-          end: "100px top",
-          scrub: true,
+          start: "top 80%",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -233,6 +234,7 @@ const Projects = () => {
           ) => (
             <div
               key={id}
+              id={`project-${id}`}
               role="article"
               ref={(el) => (projectsRef.current[index] = el)}
               className={`${styles.project} ${

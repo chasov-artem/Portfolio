@@ -4,6 +4,7 @@ import Projects from "./components/MyProjects/MyProjects";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
+import ProjectsNavigator from "./components/ProjectsNavigator/ProjectsNavigator";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <div className="flex">
           <Sidebar />
           <About />
+          <ProjectsNavigator />
           <Projects />
           <Footer />
           <div className="flex-1 p-6"></div>
