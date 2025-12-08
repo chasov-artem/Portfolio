@@ -1,6 +1,19 @@
 export const projects = [
   {
+    
     id: 14,
+    title: "mini-messenger",
+    description:
+      "A real-time messaging application built with Next.js and Node.js, featuring WebSocket-based instant messaging and user authentication. The application uses a modern tech stack including React 19, TypeScript, Redux Toolkit, Express, Prisma ORM, and SQLite, deployed on Vercel (frontend) and Render (backend) with custom domain configuration.",
+    role: "Full-Stack Developer",
+    tech: ["Next", "TS", "HTML", "CSS", "WebSocket"],
+    image: "/images/mm.png",
+    demo: "https://mini-messenger.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/mini-messenger/",
+    logoImage: "/images/mm1.png",
+  },{
+    
+    id: 15,
     title: "LearnLingo",
     description:
       "A web application for an online language learning platform. Built with React, Firebase (Auth & Realtime Database).",

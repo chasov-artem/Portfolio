@@ -9,11 +9,18 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare } from "react-icons/fa";
-import { SiRedux, SiNextdotjs } from "react-icons/si";
+import { SiRedux, SiNextdotjs, SiTypescript, SiReactquery } from "react-icons/si";
 import styles from "./MyProjects.module.css";
 import { projects } from "../../projectsData";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// SVG-іконка WebSocket за наданим шляхом
+const WebsocketIcon = (props) => (
+  <svg viewBox="0 0 32 32" width="1em" height="1em" fill="currentColor" {...props}>
+    <path d="M24.055 22.018h3.973v-9.538l-4.476-4.476-2.809 2.809 3.312 3.312v7.893zM28.038 24.010h-13.857l-3.312-3.312 1.405-1.405 2.736 2.736h5.629l-5.545-5.555 1.415-1.415 5.545 5.545v-5.629l-2.725-2.725 1.394-1.394-6.886-6.918h-13.836l3.962 3.962v0.010h8.217l2.903 2.903-4.245 4.245-2.903-2.903v-2.254h-3.973v3.899l6.876 6.876-2.799 2.799 4.476 4.476h19.485l-3.962-3.941z" />
+  </svg>
+);
 
 const techIcons = {
   HTML: <FaHtml5 />,
@@ -23,6 +30,10 @@ const techIcons = {
   Redux: <SiRedux />,
   Node: <FaNodeJs />,
   Next: <SiNextdotjs />,
+  TypeScript: <SiTypescript />,
+  TS: <SiTypescript />,
+  "React Query": <SiReactquery />,
+  WebSocket: <WebsocketIcon />,
 };
 
 const Projects = () => {
