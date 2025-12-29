@@ -1,4 +1,4 @@
-# 🚀 Artem Chasovskyi | Front-end Developer Portfolio
+# 🚀 Artem Chasov | Front-end Developer Portfolio
 
 Welcome to my professional portfolio! This project showcases my skills in front-end development, including React, modular CSS, and smooth UI/UX design. It also features my personal projects, hosted on Vercel under my custom domain.
 
