@@ -9,7 +9,7 @@ import {
   FaTelegramPlane,
 } from "react-icons/fa";
 import styles from "./Sidebar.module.css";
-import heroImage from "../../../public/images/hero.png";
+import heroImage from "../../../public/images/hero.webp";
 import { PiHeartFill } from "react-icons/pi";
 
 // Реєструємо плагіни
