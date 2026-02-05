@@ -1,6 +1,29 @@
 export const projects = [
   {
-    
+    id: 16,
+    title: "Nanny Services",
+    description:
+      "Nanny Services is a React-based web application for a nanny services company that lets users browse nanny profiles, filter by price and rating, sort alphabetically, and book appointments. Authenticated users can save favorites, synced with Firebase Realtime Database, and access a private favorites page.",
+    role: "Front-End Developer",
+    tech: ["React", "Firebase", "HTML", "CSS"],
+    image: "/images/nannies.png",
+    demo: "https://nannies.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/Nanny.Services/",
+    logoImage: "/images/nannies1.png",
+  },
+  {
+    id: 15,
+    title: "phrase-editor",
+    description:
+      "Phrase Editor is a browser-based tool for editing phrase lists with support for up to 50,000+ rows. It’s built with React 19, TypeScript, Tailwind CSS, Zustand for state, and it uses Web Workers for heavy text processing.",
+    role: "Front-End Developer",
+    tech: ["React", "TS", "Tailwind CSS", "Zustand", "Web Workers"],
+    image: "/images/phrase-editor.png",
+    demo: "https://mini-messenger.chasov-dev.com/",
+    code: "https://github.com/chasov-artem/phrase-editor",
+    logoImage: "/images/phrase-editor1.png",
+  },
+  {
     id: 14,
     title: "mini-messenger",
     description:
@@ -8,11 +31,11 @@ export const projects = [
     role: "Full-Stack Developer",
     tech: ["Next", "TS", "HTML", "CSS", "WebSocket"],
     image: "/images/mm.png",
-    demo: "https://mini-messenger.chasov-dev.com/",
+    demo: "https://phrase-editor.chasov-dev.com/",
     code: "https://github.com/chasov-artem/mini-messenger/",
     logoImage: "/images/mm1.png",
-  },{
-    
+  },
+  {
     id: 15,
     title: "LearnLingo",
     description:
