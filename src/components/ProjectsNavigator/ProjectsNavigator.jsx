@@ -3,12 +3,23 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./ProjectsNavigator.module.css";
 import { projects } from "../../projectsData";
+import { useScroll } from "../../context/ScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectsNavigator = () => {
   const sectionRef = useRef(null);
   const itemsRef = useRef([]);
+  const { scrollToProjectRef } = useScroll();
+
+  const handleProjectClick = (e, projectId) => {
+    e.preventDefault();
+    if (scrollToProjectRef.current) {
+      scrollToProjectRef.current(projectId);
+    } else {
+      window.location.hash = `#project-${projectId}`;
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -52,6 +63,8 @@ const ProjectsNavigator = () => {
             href={`#project-${project.id}`}
             className={styles.item}
             ref={(el) => (itemsRef.current[index] = el)}
+            onClick={(e) => handleProjectClick(e, project.id)}
+            aria-label={`Go to project: ${project.title}`}
           >
             <span className={styles.badge}>
               {String(index + 1).padStart(2, "0")}

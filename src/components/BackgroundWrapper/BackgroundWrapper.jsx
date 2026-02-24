@@ -1,11 +1,9 @@
-import bg from "../../../public/images/bg-dg.jpg";
-
 const BackgroundWrapper = ({ children }) => {
   return (
     <div
       className="min-h-screen bg-no-repeat bg-center"
       style={{
-        backgroundImage: `url(${bg})`,
+        backgroundImage: "url(/images/bg-dg.jpg)",
         backgroundSize: "200% auto", // зменшуємо масштаб (можна 25%, 40% тощо)
         backgroundRepeat: "repeat", // фон повторюватиметься, якщо зображення замале
       }}

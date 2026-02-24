@@ -5,9 +5,11 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import ProjectsNavigator from "./components/ProjectsNavigator/ProjectsNavigator";
+import { ScrollProvider } from "./context/ScrollContext";
 
 function App() {
   return (
+    <ScrollProvider>
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <ScrollToTop />
@@ -21,6 +23,7 @@ function App() {
         </div>
       </div>
     </div>
+    </ScrollProvider>
   );
 }
 

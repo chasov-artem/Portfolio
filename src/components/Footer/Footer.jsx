@@ -19,12 +19,13 @@ const Footer = () => {
 
       <div className={styles.socialsWrap}>
         <p className={styles.socialTitle}>Socials:</p>
-        <div className={styles.socials}>
+        <div className={styles.socials} aria-label="Social links">
           <a
             href="https://github.com/chasov-artem"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.iconLink}
+            aria-label="GitHub profile"
           >
             <FaGithub className={styles.icon} />
           </a>
@@ -33,6 +34,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.iconLink}
+            aria-label="LinkedIn profile"
           >
             <FaLinkedin className={styles.icon} />
           </a>
@@ -41,6 +43,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.iconLink}
+            aria-label="Telegram"
           >
             <FaTelegramPlane className={styles.icon} />
           </a>
@@ -49,6 +52,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.iconLink}
+            aria-label="Instagram profile"
           >
             <FaInstagram className={styles.icon} />
           </a>

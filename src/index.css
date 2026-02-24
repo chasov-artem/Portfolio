@@ -1,29 +1,26 @@
 @font-face {
   font-family: "My Font";
-  src: url("../src/fonts/gotham_light.otf") format("woff2");
+  src: url("./fonts/gotham_light.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "My Font1";
-  src: url("../src/fonts/20094.ttf") format("woff2");
+  src: url("./fonts/20094.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "My Font2";
-  src: url("../src/fonts/20278.otf") format("woff2");
+  src: url("./fonts/20278.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  background-image: url("./images/wall.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   margin: 0;
   font-family: "My Font", sans-serif;
+  background-color: #0d0d0d;
 }
 
 h1,

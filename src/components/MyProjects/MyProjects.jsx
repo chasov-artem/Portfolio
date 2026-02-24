@@ -9,16 +9,44 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare } from "react-icons/fa";
-import { SiRedux, SiNextdotjs, SiTypescript, SiReactquery } from "react-icons/si";
+import {
+  SiRedux,
+  SiNextdotjs,
+  SiTypescript,
+  SiReactquery,
+  SiFlutter,
+  SiTailwindcss,
+  SiMui,
+  SiFirebase,
+} from "react-icons/si";
 import styles from "./MyProjects.module.css";
 import { projects } from "../../projectsData";
+import { useScroll } from "../../context/ScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// SVG-іконка WebSocket за наданим шляхом
+// SVG-іконки для технологій без офіційних іконок
 const WebsocketIcon = (props) => (
   <svg viewBox="0 0 32 32" width="1em" height="1em" fill="currentColor" {...props}>
     <path d="M24.055 22.018h3.973v-9.538l-4.476-4.476-2.809 2.809 3.312 3.312v7.893zM28.038 24.010h-13.857l-3.312-3.312 1.405-1.405 2.736 2.736h5.629l-5.545-5.555 1.415-1.415 5.545 5.545v-5.629l-2.725-2.725 1.394-1.394-6.886-6.918h-13.836l3.962 3.962v0.010h8.217l2.903 2.903-4.245 4.245-2.903-2.903v-2.254h-3.973v3.899l6.876 6.876-2.799 2.799 4.476 4.476h19.485l-3.962-3.941z" />
+  </svg>
+);
+
+const WebWorkersIcon = (props) => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" {...props}>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm3.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+  </svg>
+);
+
+const ZustandIcon = (props) => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" {...props}>
+    <path d="M18 4H6C4.9 4 4 4.9 4 6v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-6 14H6v-4h6v4zm0-6H6V8h6v4zm6 6h-4v-4h4v4zm0-6h-4V8h4v4z" />
+  </svg>
+);
+
+const JwtIcon = (props) => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" {...props}>
+    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
   </svg>
 );
 
@@ -34,6 +62,13 @@ const techIcons = {
   TS: <SiTypescript />,
   "React Query": <SiReactquery />,
   WebSocket: <WebsocketIcon />,
+  Flutter: <SiFlutter />,
+  "Tailwind CSS": <SiTailwindcss />,
+  "Material-UI": <SiMui />,
+  Firebase: <SiFirebase />,
+  JWT: <JwtIcon />,
+  Zustand: <ZustandIcon />,
+  "Web Workers": <WebWorkersIcon />,
 };
 
 const Projects = () => {
@@ -42,6 +77,7 @@ const Projects = () => {
   const myProjectsTitleRef = useRef(null);
   const arrowsRef = useRef(null);
   const lenisRef = useRef(null);
+  const { scrollToProjectRef, scrollToSectionRef, scrollToTopRef } = useScroll();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -182,7 +218,35 @@ const Projects = () => {
       ScrollTrigger.refresh(true);
     }, 200);
 
-    return () => lenis.destroy();
+    // Реєстрація плавної прокрутки для Projects Map
+    scrollToProjectRef.current = (id) => {
+      const el = document.getElementById(`project-${id}`);
+      if (el && lenisRef.current) {
+        lenisRef.current.scrollTo(el, { offset: 0, duration: 1.2 });
+      }
+    };
+
+    // Плавна прокрутка до секцій (Sidebar nav)
+    scrollToSectionRef.current = (sectionId) => {
+      const el = document.getElementById(sectionId);
+      if (el && lenisRef.current) {
+        lenisRef.current.scrollTo(el, { offset: 0, duration: 1.2 });
+      }
+    };
+
+    // Прокрутка нагору
+    scrollToTopRef.current = () => {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
+    };
+
+    return () => {
+      scrollToProjectRef.current = null;
+      scrollToSectionRef.current = null;
+      scrollToTopRef.current = null;
+      lenis.destroy();
+    };
   }, []);
 
   // Функція для стрілок

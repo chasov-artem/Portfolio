@@ -9,13 +9,23 @@ import {
   FaTelegramPlane,
 } from "react-icons/fa";
 import styles from "./Sidebar.module.css";
-import heroImage from "../../../public/images/hero.webp";
 import { PiHeartFill } from "react-icons/pi";
+import { useScroll } from "../../context/ScrollContext";
 
 // Реєструємо плагіни
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const Sidebar = () => {
+  const { scrollToSectionRef } = useScroll();
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    if (scrollToSectionRef.current) {
+      scrollToSectionRef.current(sectionId);
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const sidebarRef = useRef(null);
   const titleRef = useRef(null);
   const cursorRef = useRef(null);
@@ -209,13 +219,13 @@ const Sidebar = () => {
       </div>
 
       <nav className={styles.nav}>
-        <a href="#about" className={styles.navLink}>
+        <a href="#about" className={styles.navLink} onClick={(e) => handleNavClick(e, "about")}>
           About
         </a>
-        <a href="#myProjects" className={styles.navLink}>
+        <a href="#myProjects" className={styles.navLink} onClick={(e) => handleNavClick(e, "myProjects")}>
           Projects
         </a>
-        <a href="#myContacts" className={styles.navLink}>
+        <a href="#myContacts" className={styles.navLink} onClick={(e) => handleNavClick(e, "myContacts")}>
           Contacts
         </a>
       </nav>
@@ -223,7 +233,7 @@ const Sidebar = () => {
       <img
         ref={heroImageRef}
         className={styles.heroImage}
-        src={heroImage}
+        src="/images/hero.webp"
         alt="hero"
       />
 

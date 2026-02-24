@@ -12,7 +12,6 @@ import {
 import { SiTypescript, SiNextdotjs } from "react-icons/si";
 
 import styles from "./About.module.css";
-import me from "../../../public/images/me.png";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -147,7 +146,7 @@ const About = () => {
         </div>
       </div>
 
-      <img ref={aboutPhotoRef} className={styles.photo} src={me} alt="Me" />
+      <img ref={aboutPhotoRef} className={styles.photo} src="/images/me.png" alt="Me" />
     </section>
   );
 };
