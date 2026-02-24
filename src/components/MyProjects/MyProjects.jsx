@@ -20,7 +20,7 @@ import {
   SiFirebase,
 } from "react-icons/si";
 import styles from "./MyProjects.module.css";
-import { projects } from "../../projectsData";
+import { featuredProjects, otherProjects, projectsOrdered } from "../../projectsData";
 import { useScroll } from "../../context/ScrollContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -69,6 +69,100 @@ const techIcons = {
   JWT: <JwtIcon />,
   Zustand: <ZustandIcon />,
   "Web Workers": <WebWorkersIcon />,
+};
+
+const ProjectCard = ({ project, index, projectsRef, techIcons, isFeatured }) => {
+  const {
+    id,
+    title,
+    description,
+    tech,
+    image,
+    demo,
+    code,
+    logoImage,
+    role,
+    caseStudy,
+  } = project;
+
+  return (
+    <div
+      id={`project-${id}`}
+      role="article"
+      ref={(el) => (projectsRef.current[index] = el)}
+      className={`${styles.project} ${
+        index % 2 === 0 ? styles.even : styles.odd
+      } ${isFeatured ? styles.featured : ""}`}
+    >
+      <a
+        href={demo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.imageWrapper}
+      >
+        <img src={image} alt={title} className={styles.image} />
+      </a>
+
+      <div className={styles.textWrapper}>
+        {isFeatured && (
+          <span className={styles.featuredBadge}>Featured</span>
+        )}
+        {logoImage && (
+          <div className={styles.logoWrapper}>
+            <img
+              src={logoImage}
+              alt={`${title} Logo`}
+              className={styles.logoImage}
+            />
+          </div>
+        )}
+
+        <h3 className={styles.projectTitle}>{title}</h3>
+        {isFeatured && caseStudy && (
+          <div className={styles.caseStudy}>
+            <p><strong>Problem:</strong> {caseStudy.problem}</p>
+            <p><strong>Solution:</strong> {caseStudy.solution}</p>
+            <p><strong>Highlight:</strong> {caseStudy.highlight}</p>
+          </div>
+        )}
+        <p className={styles.description}>{description}</p>
+        <p className={styles.role}>Role: {role}</p>
+
+        <div className={styles.techStack}>
+          {tech.map((t, i) => {
+            const Icon = techIcons[t];
+            return (
+              <span key={i} className={styles.tech}>
+                {Icon && <>{Icon} </>}
+                {t}
+              </span>
+            );
+          })}
+        </div>
+
+        <div className={styles.links}>
+          <a
+            className={styles.link}
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaExternalLinkAlt />
+            Demo
+          </a>
+          <a
+            className={styles.link}
+            href={code}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+            Code
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const Projects = () => {
@@ -141,12 +235,13 @@ const Projects = () => {
     });
 
     // GSAP-анімації для кожного проекту
-    projectsRef.current.forEach((project, index) => {
-      if (!project) return;
+    projectsRef.current.forEach((projectEl, index) => {
+      if (!projectEl) return;
 
       const isEven = index % 2 === 0;
-      const img = project.querySelector(`.${styles.imageWrapper}`);
-      const text = project.querySelector(`.${styles.textWrapper}`);
+      const img = projectEl?.querySelector(`.${styles.imageWrapper}`);
+      const text = projectEl?.querySelector(`.${styles.textWrapper}`);
+      if (!img || !text) return;
 
       // Початкові стилі
       gsap.set([img, text], {
@@ -158,7 +253,7 @@ const Projects = () => {
       // Анімація для зображення
       const imgTl = gsap.timeline({
         scrollTrigger: {
-          trigger: project,
+          trigger: projectEl,
           start: "top 90%",
           end: "top -110%",
           scrub: 1,
@@ -183,7 +278,7 @@ const Projects = () => {
       // Анімація для тексту
       const textTl = gsap.timeline({
         scrollTrigger: {
-          trigger: project,
+          trigger: projectEl,
           start: "top 90%",
           end: "top -110%",
           scrub: 1,
@@ -281,90 +376,28 @@ const Projects = () => {
       </h2>
 
       <div className={styles.projectsList}>
-        {projects.map(
-          (
-            {
-              id,
-              title,
-              description,
-              tech,
-              image,
-              demo,
-              code,
-              logoImage,
-              role,
-            },
-            index
-          ) => (
-            <div
-              key={id}
-              id={`project-${id}`}
-              role="article"
-              ref={(el) => (projectsRef.current[index] = el)}
-              className={`${styles.project} ${
-                index % 2 === 0 ? styles.even : styles.odd
-              }`}
-            >
-              <a
-                href={demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.imageWrapper}
-              >
-                <img src={image} alt={title} className={styles.image} />
-              </a>
+        <h3 className={styles.sectionTitle}>Featured Projects</h3>
+        {featuredProjects.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            projectsRef={projectsRef}
+            techIcons={techIcons}
+            isFeatured
+          />
+        ))}
 
-              <div className={styles.textWrapper}>
-                {logoImage && (
-                  <div className={styles.logoWrapper}>
-                    <img
-                      src={logoImage}
-                      alt={`${title} Logo`}
-                      className={styles.logoImage}
-                    />
-                  </div>
-                )}
-
-                <h3 className={styles.projectTitle}>{title}</h3>
-                <p className={styles.description}>{description}</p>
-                <p className={styles.role}>Role: {role}</p>
-
-                <div className={styles.techStack}>
-                  {tech.map((t, i) => {
-                    const Icon = techIcons[t];
-                    return (
-                      <span key={i} className={styles.tech}>
-                        {Icon && <>{Icon} </>}
-                        {t}
-                      </span>
-                    );
-                  })}
-                </div>
-
-                <div className={styles.links}>
-                  <a
-                    className={styles.link}
-                    href={demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaExternalLinkAlt />
-                    Demo
-                  </a>
-                  <a
-                    className={styles.link}
-                    href={code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub />
-                    Code
-                  </a>
-                </div>
-              </div>
-            </div>
-          )
-        )}
+        <h3 className={styles.sectionTitle}>Other Projects</h3>
+        {otherProjects.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={featuredProjects.length + index}
+            projectsRef={projectsRef}
+            techIcons={techIcons}
+          />
+        ))}
       </div>
     </section>
   );

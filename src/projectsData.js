@@ -10,6 +10,13 @@ export const projects = [
     demo: "https://nannies.chasov-dev.com/",
     code: "https://github.com/chasov-artem/Nanny.Services/",
     logoImage: "/images/nannies1.png",
+    featured: true,
+    featuredOrder: 5,
+    caseStudy: {
+      problem: "Nanny agency needed a modern web app for browsing profiles, filtering, and booking.",
+      solution: "Built React app with Firebase Auth & Realtime DB for favorites sync and private user pages.",
+      highlight: "Firebase integration, auth flow, real-time data sync.",
+    },
   },
   {
     id: 16,
@@ -22,6 +29,13 @@ export const projects = [
     demo: "https://phrase-editor.chasov-dev.com/",
     code: "https://github.com/chasov-artem/phrase-editor",
     logoImage: "/images/phrase-editor1.png",
+    featured: true,
+    featuredOrder: 2,
+    caseStudy: {
+      problem: "Need to edit large phrase lists (50k+ rows) without freezing the browser.",
+      solution: "Built React 19 + TypeScript app with Web Workers for heavy processing, Zustand for state.",
+      highlight: "Web Workers, performance optimization, TypeScript, Tailwind.",
+    },
   },
   {
     id: 15,
@@ -34,6 +48,13 @@ export const projects = [
     demo: "https://mini-messenger.chasov-dev.com/",
     code: "https://github.com/chasov-artem/mini-messenger/",
     logoImage: "/images/mm1.png",
+    featured: true,
+    featuredOrder: 1,
+    caseStudy: {
+      problem: "Real-time chat app with auth, WebSocket messaging, and full-stack deployment.",
+      solution: "Next.js + Express, Prisma, SQLite, WebSocket. Deployed on Vercel + Render.",
+      highlight: "Full-Stack, WebSocket, Next.js, TypeScript, Prisma.",
+    },
   },
   {
     id: 14,
@@ -58,6 +79,13 @@ export const projects = [
     demo: "https://www.billiard-servis.com/",
     code: "https://github.com/chasov-artem/billirds-catalog",
     logoImage: "/images/billiard1.png",
+    featured: true,
+    featuredOrder: 4,
+    caseStudy: {
+      problem: "Billiards store needed an e-commerce catalog with admin panel and product import.",
+      solution: "React + Firebase catalog with CSV import, admin panel, responsive UI.",
+      highlight: "Commercial project, admin panel, CSV import, Firebase.",
+    },
   },
   {
     id: 12,
@@ -118,6 +146,13 @@ export const projects = [
     demo: "https://crm.chasov-dev.com/dashboard",
     code: "https://github.com/chasov-artem/crm",
     logoImage: "/images/crm2.png",
+    featured: true,
+    featuredOrder: 3,
+    caseStudy: {
+      problem: "CRM dashboard with dynamic routing, forms, and real-time data.",
+      solution: "Next.js 14 + React Query, SSR, modal forms, mock API integration.",
+      highlight: "Next.js 14, React Query, SSR, dynamic routing.",
+    },
   },
   {
     id: 7,
@@ -204,3 +239,13 @@ export const projects = [
     logoImage: "/images/web.png",
   },
 ];
+
+// Featured projects (order: mini-messenger, phrase-editor, CRM, Billiard-servis, Nanny Services)
+export const featuredProjects = projects
+  .filter((p) => p.featured)
+  .sort((a, b) => a.featuredOrder - b.featuredOrder);
+
+export const otherProjects = projects.filter((p) => !p.featured);
+
+// All projects in display order: Featured first, then others
+export const projectsOrdered = [...featuredProjects, ...otherProjects];
