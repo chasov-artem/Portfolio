@@ -1,6 +1,6 @@
 export const projects = [
   {
-    id: 16,
+    id: 17,
     title: "Nanny Services",
     description:
       "Nanny Services is a React-based web application for a nanny services company that lets users browse nanny profiles, filter by price and rating, sort alphabetically, and book appointments. Authenticated users can save favorites, synced with Firebase Realtime Database, and access a private favorites page.",
@@ -12,7 +12,7 @@ export const projects = [
     logoImage: "/images/nannies1.png",
   },
   {
-    id: 15,
+    id: 16,
     title: "phrase-editor",
     description:
       "Phrase Editor is a browser-based tool for editing phrase lists with support for up to 50,000+ rows. It’s built with React 19, TypeScript, Tailwind CSS, Zustand for state, and it uses Web Workers for heavy text processing.",
@@ -24,7 +24,7 @@ export const projects = [
     logoImage: "/images/phrase-editor1.png",
   },
   {
-    id: 14,
+    id: 15,
     title: "mini-messenger",
     description:
       "A real-time messaging application built with Next.js and Node.js, featuring WebSocket-based instant messaging and user authentication. The application uses a modern tech stack including React 19, TypeScript, Redux Toolkit, Express, Prisma ORM, and SQLite, deployed on Vercel (frontend) and Render (backend) with custom domain configuration.",
@@ -36,7 +36,7 @@ export const projects = [
     logoImage: "/images/mm1.png",
   },
   {
-    id: 15,
+    id: 14,
     title: "LearnLingo",
     description:
       "A web application for an online language learning platform. Built with React, Firebase (Auth & Realtime Database).",
