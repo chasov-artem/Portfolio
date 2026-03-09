@@ -1,5 +1,27 @@
 export const projects = [
   {
+    id: 18,
+    title: "PulseBeauty Studio",
+    description:
+      "Commercial website for PulseBeauty Studio — electrolysis hair removal studio in Auckland, NZ. Built with React 19, Vite 7, Tailwind CSS 4. Features multilingual support (en/ru), SEO optimization, React Router 7, Framer Motion animations, and Swiper for galleries.",
+    role: "Front-End Developer",
+    tech: ["React", "Tailwind CSS", "Framer Motion"],
+    image: "/images/pulse.png",
+    demo: "https://www.pulsebeauty-studio.com/en",
+    code: "https://github.com/chasov-artem/daria-zhuravel",
+    logoImage: "/images/pulse1.png",
+    featured: true,
+    featuredOrder: 1,
+    caseStudy: {
+      problem:
+        "Electrolysis studio needed a modern, multilingual website with booking, gallery, and SEO.",
+      solution:
+        "React 19 + Vite 7 + Tailwind CSS 4 with en/ru i18n, Framer Motion, Swiper, SEO setup.",
+      highlight:
+        "Commercial project, multilingual, SEO, React 19, Tailwind CSS 4.",
+    },
+  },
+  {
     id: 17,
     title: "Nanny Services",
     description:
@@ -11,10 +33,12 @@ export const projects = [
     code: "https://github.com/chasov-artem/Nanny.Services/",
     logoImage: "/images/nannies1.png",
     featured: true,
-    featuredOrder: 5,
+    featuredOrder: 6,
     caseStudy: {
-      problem: "Nanny agency needed a modern web app for browsing profiles, filtering, and booking.",
-      solution: "Built React app with Firebase Auth & Realtime DB for favorites sync and private user pages.",
+      problem:
+        "Nanny agency needed a modern web app for browsing profiles, filtering, and booking.",
+      solution:
+        "Built React app with Firebase Auth & Realtime DB for favorites sync and private user pages.",
       highlight: "Firebase integration, auth flow, real-time data sync.",
     },
   },
@@ -30,10 +54,12 @@ export const projects = [
     code: "https://github.com/chasov-artem/phrase-editor",
     logoImage: "/images/phrase-editor1.png",
     featured: true,
-    featuredOrder: 2,
+    featuredOrder: 3,
     caseStudy: {
-      problem: "Need to edit large phrase lists (50k+ rows) without freezing the browser.",
-      solution: "Built React 19 + TypeScript app with Web Workers for heavy processing, Zustand for state.",
+      problem:
+        "Need to edit large phrase lists (50k+ rows) without freezing the browser.",
+      solution:
+        "Built React 19 + TypeScript app with Web Workers for heavy processing, Zustand for state.",
       highlight: "Web Workers, performance optimization, TypeScript, Tailwind.",
     },
   },
@@ -49,10 +75,12 @@ export const projects = [
     code: "https://github.com/chasov-artem/mini-messenger/",
     logoImage: "/images/mm1.png",
     featured: true,
-    featuredOrder: 1,
+    featuredOrder: 2,
     caseStudy: {
-      problem: "Real-time chat app with auth, WebSocket messaging, and full-stack deployment.",
-      solution: "Next.js + Express, Prisma, SQLite, WebSocket. Deployed on Vercel + Render.",
+      problem:
+        "Real-time chat app with auth, WebSocket messaging, and full-stack deployment.",
+      solution:
+        "Next.js + Express, Prisma, SQLite, WebSocket. Deployed on Vercel + Render.",
       highlight: "Full-Stack, WebSocket, Next.js, TypeScript, Prisma.",
     },
   },
@@ -80,10 +108,12 @@ export const projects = [
     code: "https://github.com/chasov-artem/billirds-catalog",
     logoImage: "/images/billiard1.png",
     featured: true,
-    featuredOrder: 4,
+    featuredOrder: 5,
     caseStudy: {
-      problem: "Billiards store needed an e-commerce catalog with admin panel and product import.",
-      solution: "React + Firebase catalog with CSV import, admin panel, responsive UI.",
+      problem:
+        "Billiards store needed an e-commerce catalog with admin panel and product import.",
+      solution:
+        "React + Firebase catalog with CSV import, admin panel, responsive UI.",
       highlight: "Commercial project, admin panel, CSV import, Firebase.",
     },
   },
@@ -147,10 +177,11 @@ export const projects = [
     code: "https://github.com/chasov-artem/crm",
     logoImage: "/images/crm2.png",
     featured: true,
-    featuredOrder: 3,
+    featuredOrder: 4,
     caseStudy: {
       problem: "CRM dashboard with dynamic routing, forms, and real-time data.",
-      solution: "Next.js 14 + React Query, SSR, modal forms, mock API integration.",
+      solution:
+        "Next.js 14 + React Query, SSR, modal forms, mock API integration.",
       highlight: "Next.js 14, React Query, SSR, dynamic routing.",
     },
   },
