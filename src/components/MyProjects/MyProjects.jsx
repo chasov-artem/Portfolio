@@ -19,6 +19,7 @@ import {
   SiMui,
   SiFirebase,
 } from "react-icons/si";
+import { TbBrandFramerMotion } from "react-icons/tb";
 import styles from "./MyProjects.module.css";
 import { featuredProjects, otherProjects, projectsOrdered } from "../../projectsData";
 import { useScroll } from "../../context/ScrollContext";
@@ -69,6 +70,7 @@ const techIcons = {
   JWT: <JwtIcon />,
   Zustand: <ZustandIcon />,
   "Web Workers": <WebWorkersIcon />,
+  "Framer Motion": <TbBrandFramerMotion />,
 };
 
 const ProjectCard = ({ project, index, projectsRef, techIcons, isFeatured }) => {
